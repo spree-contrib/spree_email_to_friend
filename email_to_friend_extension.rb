@@ -2,8 +2,8 @@
 # require_dependency 'application'
 
 class EmailToFriendExtension < Spree::Extension
-  version "1.0"
-  description "Describe your extension here"
+  version "0.1"
+  description "Tell a friend about a product"
   url "http://yourwebsite.com/email_to_friend"
 
   # Please use email_to_friend/config/routes.rb instead for extension routes.
@@ -11,7 +11,7 @@ class EmailToFriendExtension < Spree::Extension
   # def self.require_gems(config)
   #   config.gem "gemname-goes-here", :version => '1.2.3'
   # end
-  
+
   def activate
 
     # Add your extension tab to the admin.
