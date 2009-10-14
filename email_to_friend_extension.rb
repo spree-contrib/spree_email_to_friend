@@ -12,7 +12,7 @@ class EmailToFriendExtension < Spree::Extension
   # Please use email_to_friend/config/routes.rb instead for extension routes.
 
   def self.require_gems(config)
-    config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"
+    config.gem "recaptcha", :lib => "recaptcha/rails", :source => "http://gemcutter.org"
     config.gem "validatable"
   end
 
