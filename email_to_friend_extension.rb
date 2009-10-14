@@ -1,18 +1,31 @@
+# -*- coding: utf-8 -*-
 # Uncomment this if you reference any of your controllers in activate
-# require_dependency 'application'
+require_dependency 'application_controller'
+
+require 'tell_friend_actions'
 
 class EmailToFriendExtension < Spree::Extension
-  version "0.1"
+  version "1.0"
   description "Tell a friend about a product"
-  url "http://yourwebsite.com/email_to_friend"
+  url "http://github.com/calas/spree-email-to-friend"
 
   # Please use email_to_friend/config/routes.rb instead for extension routes.
 
-  # def self.require_gems(config)
-  #   config.gem "gemname-goes-here", :version => '1.2.3'
-  # end
+  def self.require_gems(config)
+    config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"
+    config.gem "validatable"
+  end
 
   def activate
+    AppConfiguration.class_eval do
+      # this keys works for localhost
+      preference :recaptcha_private_key, :string, :default => '6LfIsgEAAAAAAGfB6Z0lEUtdL3GVuBkRa9cYlMZz'
+      preference :recaptcha_public_key, :string, :default => '6LfIsgEAAAAAALpT20eiC3RslZQmmCbiNS-AUvSe'
+    end
+
+    ProductsController.class_eval do
+      include TellFriendActions
+    end
 
     # Add your extension tab to the admin.
     # Requires that you have defined an admin controller:
