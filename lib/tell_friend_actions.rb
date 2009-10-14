@@ -13,7 +13,7 @@ module TellFriendActions
     respond_to do |format|
       format.html do
         if @mail_to_friend.valid? &&
-            verify_recaptcha(:private_key => Spree::Config[:recaptcha_private_key])
+            verify_recaptcha(:private_key => Spree::Captcha::Config[:private_key])
           flash[:notice] = I18n.t('email_to_friend.mail_sent_to', :email => @mail_to_friend.recipient_email)
           flash[:notice] << @template.link_to(I18n.t('email_to_friend.send_to_other'),
                                               tell_a_friend_product_path(@product))

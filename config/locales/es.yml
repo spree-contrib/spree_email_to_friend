@@ -12,3 +12,9 @@ es:
     mail_sent_to: "Mensaje enviado a {{email}} "
     send_to_other: "Enviar a otro amigo"
     you_would_like_this: "Creo que este artículo te gustará"
+  captcha:
+    captcha_settings: "Configuracion de Captcha"
+    public_key: "Llave pública"
+    private_key: "Llave privada"
+    manage_keys: "Administrar tus llaves de recaptcha."
+    theme: "Tema"

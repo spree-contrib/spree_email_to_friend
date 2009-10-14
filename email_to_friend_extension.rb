@@ -17,35 +17,20 @@ class EmailToFriendExtension < Spree::Extension
   end
 
   def activate
-    AppConfiguration.class_eval do
-      # this keys works for localhost
-      preference :recaptcha_private_key, :string, :default => '6LfIsgEAAAAAAGfB6Z0lEUtdL3GVuBkRa9cYlMZz'
-      preference :recaptcha_public_key, :string, :default => '6LfIsgEAAAAAALpT20eiC3RslZQmmCbiNS-AUvSe'
-    end
-
     ProductsController.class_eval do
       include TellFriendActions
     end
 
-    # Add your extension tab to the admin.
-    # Requires that you have defined an admin controller:
-    # app/controllers/admin/yourextension_controller
-    # and that you mapped your admin in config/routes
+    Admin::ConfigurationsController.class_eval do
+      before_filter :add_captcha_settings_links, :only => :index
 
-    #Admin::BaseController.class_eval do
-    #  before_filter :add_yourextension_tab
-    #
-    #  def add_yourextension_tab
-    #    # add_extension_admin_tab takes an array containing the same arguments expected
-    #    # by the tab helper method:
-    #    #   [ :extension_name, { :label => "Your Extension", :route => "/some/non/standard/route" } ]
-    #    add_extension_admin_tab [ :yourextension ]
-    #  end
-    #end
-
-    # make your helper avaliable in all views
-    # Spree::BaseController.class_eval do
-    #   helper YourHelper
-    # end
+      def add_captcha_settings_links
+        @extension_links << {
+          :link => admin_captcha_settings_path,
+          :link_text => t('captcha.captcha_settings'),
+          :description => t('captcha.manage_keys')
+        }
+      end
+    end
   end
 end

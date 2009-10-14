@@ -1,0 +1,22 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t("captcha.captcha_settings") %></h1>
+
+<table>
+  <tr>
+    <th scope="row"><%= t("captcha.public_key") %>:</th>
+    <td><%= Spree::Captcha::Config[:public_key] %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("captcha.private_key") %>:</th>
+    <td><%=  Spree::Captcha::Config[:private_key] %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("captcha.theme") %>:</th>
+    <td><%=  Spree::Captcha::Config[:theme] %></td>
+  </tr>
+</table>
+
+<p>
+  <%= link_to_with_icon('edit', t("edit"), edit_admin_captcha_settings_path) %>
+</p>

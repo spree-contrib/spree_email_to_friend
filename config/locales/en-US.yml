@@ -12,3 +12,10 @@ en-US:
     mail_sent_to: "Mail sent to {{email}} "
     send_to_other: "Send to other friend"
     you_would_like_this: "I think you would like this item"
+
+  captcha:
+    captcha_settings: "Captcha Settings"
+    public_key: "Public key"
+    private_key: "Private key"
+    manage_keys: "Manage your (re)captcha keys"
+    theme: "Theme"

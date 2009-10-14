@@ -1,0 +1,22 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t("captcha.captcha_settings") %></h1>
+
+<% form_tag(admin_captcha_settings_path, :method => :put) do -%>
+  <p>
+    <label><%= t("captcha.public_key") %>:</label>
+    <%= text_field_tag('preferences[public_key]', Spree::Captcha::Config[:public_key], :size => 40) %>
+  </p>
+  <p>
+    <label><%= t('captcha.private_key') %>:</label>
+    <%= text_field_tag('preferences[private_key]', Spree::Captcha::Config[:private_key], :size => 40)%>
+  </p>
+  <p>
+    <label><%= t('captcha.theme') %>:</label>
+    <%= select_tag('preferences[theme]', options_for_select(CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme])) %>
+  </p>
+  <p class="form-buttons">
+    <%= button t('update') %>
+    <%= t("or") %> <%= link_to t("cancel"), admin_captcha_settings_url %>
+  </p>
+<% end -%>

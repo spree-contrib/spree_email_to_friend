@@ -6,7 +6,6 @@
     <%= f.label(:sender_name, t('email_to_friend.sender_name')) %><br/>
     <%= f.text_field(:sender_name) %>
   </p>
-
   <p>
     <%= f.label(:sender_email, t('email_to_friend.sender_email')) %><br/>
     <%= f.text_field(:sender_email) %>
@@ -23,9 +22,7 @@
     <%= f.label(:message, t('email_to_friend.message')) %><br/>
     <%= f.text_area(:message) %>
   </p>
-
-  <%= recaptcha_tags :public_key => Spree::Config[:recaptcha_public_key] %>
-
+  <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
   <p>
     <%= f.submit(t('email_to_friend.send_message')) %>
   </p>
