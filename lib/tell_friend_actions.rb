@@ -1,12 +1,7 @@
 module TellFriendActions
-  def self.included(base)
-    base.class_eval do
-      before_filter :load_data, :only => [:show, :tell_a_friend]
-    end
-  end
-
   def tell_a_friend
     load_object
+    load_data
     @mail_to_friend = MailToFriend.new(:sender_email => current_user.try(:email))
     respond_to do |format|
       format.html
