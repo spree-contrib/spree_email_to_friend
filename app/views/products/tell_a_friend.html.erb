@@ -1,4 +1,4 @@
-<h1><%= t('email_to_friend.tell_about', :product => @product.name) %></h1>
+<h1><%= t('email_to_friend.tell_about', :product => link_to(@product.name, product_path(@product))) %></h1>
 
 <% form_for(@mail_to_friend, :url => mail_to_friend_product_path(@product)) do |f| -%>
   <%= f.error_messages %>
