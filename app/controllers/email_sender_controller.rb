@@ -34,8 +34,12 @@ class EmailSenderController < Spree::BaseController
     class_name = params[:type].titleize.constantize
     return false if params[:id].blank?
     @object = class_name.find_by_id(params[:id])
-    @object ||= class_name.find_by_permalink(params[:id])
-    @object ||= class_name.get_by_param(params[:id]) if class_name.respond_to?('get_by_param')
+    if class_name.respond_to?('find_by_permalink')
+      @object ||= class_name.find_by_permalink(params[:id])
+    end
+    if class_name.respond_to?('get_by_param') 
+      @object ||= class_name.get_by_param(params[:id]) 
+    end
   end
   
 end
