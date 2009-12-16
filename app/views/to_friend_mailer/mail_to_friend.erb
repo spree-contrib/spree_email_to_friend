@@ -1,0 +1,3 @@
+<% object_sym = @object.class.name.downcase %>
+<%= render :partial => "#{object_sym.pluralize}/mail_to_friend", 
+           :locals => {object_sym.to_sym => @object, :mail => @mail} %>

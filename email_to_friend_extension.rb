@@ -2,8 +2,6 @@
 # Uncomment this if you reference any of your controllers in activate
 require_dependency 'application_controller'
 
-require 'tell_friend_actions'
-
 class EmailToFriendExtension < Spree::Extension
   version "1.0"
   description "Tell a friend about a product"
@@ -17,10 +15,6 @@ class EmailToFriendExtension < Spree::Extension
   end
 
   def activate
-    ProductsController.class_eval do
-      include TellFriendActions
-    end
-
     Admin::ConfigurationsController.class_eval do
       before_filter :add_captcha_settings_links, :only => :index
 
