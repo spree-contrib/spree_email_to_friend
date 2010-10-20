@@ -1,7 +1,9 @@
-# Put your extension routes here.
+Rails.application.routes.draw do
 
-map.email_to_friend "/email_to_friend/:type/:id", :controller => 'email_sender', :action => 'send_mail'
+  match "/email_to_friend/:type/:id" => 'email_sender#send_mail', :as => :email_to_friend
 
-map.namespace :admin do |admin|
-  admin.resource :captcha_settings
+  namespace :admin do
+    resource :captcha_settings
+  end
+
 end

@@ -1,5 +1,5 @@
 ---
-en-US:
+en:
   email_to_friend:
     send_to_friend: "Email a friend"
     tell_about: "Tell a friend about: {{product}}"
