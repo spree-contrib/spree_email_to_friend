@@ -22,7 +22,9 @@
     <%= f.label(:message, t('email_to_friend.message')) %><br/>
     <%= f.text_area(:message) %>
   </p>
-  <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
+  <% if Spree::Captcha::Config[:use_captcha] %>
+    <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
+  <% end %>
   <p>
     <%= f.submit(t('email_to_friend.send_message')) %>
   </p>
