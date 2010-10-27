@@ -7,6 +7,7 @@ en:
     sender_email: "Your email address"
     recipient_name: "Your friend's name"
     recipient_email: "Your friend's email address"
+    recipient_emails: "Email addresses (comma separated)"
     message: "Message"
     send_message: "Tell your friend!"
     mail_sent_to: "Mail sent to {{email}} "
