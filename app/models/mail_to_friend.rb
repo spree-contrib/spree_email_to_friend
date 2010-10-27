@@ -9,10 +9,10 @@ class MailToFriend
   validates :recipient_email, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i }
 
   def initialize(opts = {})
-    @sender_name = opts[:sender_name]
-    @sender_email = opts[:sender_email]
-    @recipient_name = opts[:recipient_name]
-    @recipient_email = opts[:recipient_email]
+    @sender_email = opts[:sender_email] || ' '
+    @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
+    @recipient_email = (opts[:recipient_email] || ' ').gsub(';', ',')
+    @recipient_name = opts[:recipient_name] || @recipient_email.split('@', 2)[0].titleize
     @message = opts[:message]
   end
   
