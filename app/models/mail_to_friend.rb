@@ -6,7 +6,7 @@ class MailToFriend
   validates :sender_name, :presence => true
   validates :recipient_name, :presence => true
   validates :sender_email, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i }
-  validates :recipient_email, :format => { :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i }
+  validates :recipient_email, :format => { :with => /^([A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}[,;]?\s?)+$/i }
 
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
