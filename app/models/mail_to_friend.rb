@@ -1,22 +1,42 @@
 class MailToFriend
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  attr_accessor :sender_name, :sender_email, :recipient_name, :recipient_email, :message
+  attr_accessor :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients
+
+  EMAILREGEX = /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}$/i
 
   validates :sender_name, :presence => true
-  validates :recipient_name, :presence => true
-  validates :sender_email, :format => { :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}$/i }
-  validates :recipient_email, :format => { :with => /^([-a-z0-9_+\.]+\@[-a-z0-9]+\.+[a-z0-9]{2,8}[,;]*)+$/i , :message => "contains invalid email address" }
+  validates :recipient_name, :presence => true, :unless => :is_multi
+  validates :sender_email, :format => { :with => EMAILREGEX }
+  validates :recipients, :length => {:minimum => 1, :message => "must contain at least one valid email address"}
+  validates :invalid_recipients, :length => {:maximum => 0, :message => "must be removed"}
 
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
     @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
-    @recipient_email = (opts[:recipient_email] || ' ').gsub(';', ',').gsub(/\s/ , "")
-    @recipient_name = opts[:recipient_name] || @recipient_email.split('@', 2)[0].titleize
+
+    @recipients = []
+    @invalid_recipients = []
+
+    @recipient_email = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/ , '')
+    @recipient_email.split(',').each do |address|
+      if address =~ EMAILREGEX
+         @recipients << address
+      else
+        @invalid_recipients << address
+      end
+    end
+
+    @recipient_name = opts[:recipient_name]
+    @recipient_name ||= @recipients[0].split('@', 2)[0].titleize unless @recipients.empty?
     @message = opts[:message]
   end
 
   def persisted?
     false
+  end
+
+  def is_multi
+    (@recipients.size + @invalid_recipients.size) > 1
   end
 end
