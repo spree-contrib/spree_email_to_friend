@@ -3,10 +3,9 @@ class ToFriendMailer < ActionMailer::Base
   default :from => Spree::Config[:mails_from]
 
   def mail_to_friend(object, mail)
-    subject = I18n.t('email_to_friend.you_would_like_this')       
     @object = object
     @mail = mail
-    mail(:to => mail.recipient_email, :subject => subject, 
+    mail(:to => mail.recipient_email, :subject => mail.subject,
          :reply_to => mail.sender_email)
   end
 end

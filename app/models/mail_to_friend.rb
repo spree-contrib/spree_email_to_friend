@@ -1,10 +1,11 @@
 class MailToFriend
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  attr_accessor :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients
+  attr_accessor :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients
 
   EMAILREGEX = /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}$/i
 
+  validates :subject, :presence => true
   validates :sender_name, :presence => true
   validates :recipient_name, :presence => true, :unless => :is_multi
   validates :sender_email, :format => { :with => EMAILREGEX }
@@ -12,6 +13,7 @@ class MailToFriend
   validates :invalid_recipients, :length => {:maximum => 0, :message => "must be removed"}
 
   def initialize(opts = {})
+    @subject      = opts[:subject]      || I18n.t('email_to_friend.you_would_like_this')
     @sender_email = opts[:sender_email] || ' '
     @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
 

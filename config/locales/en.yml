@@ -2,7 +2,7 @@
 en:
   email_to_friend:
     send_to_friend: "Email a friend"
-    tell_about: "Tell a friend about: {{product}}"
+    tell_about: "Tell a friend about: %{product}"
     sender_name: "Your name"
     sender_email: "Your email address"
     recipient_name: "Your friend's name"
@@ -10,7 +10,7 @@ en:
     recipient_emails: "Email addresses (comma separated)"
     message: "Message"
     send_message: "Tell your friend!"
-    mail_sent_to: "Mail sent to {{email}} "
+    mail_sent_to: "Mail sent to %{email} "
     send_to_other: "Send to other friend"
     you_would_like_this: "I think you would like this item"
 
