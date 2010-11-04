@@ -1,7 +1,7 @@
 class MailToFriend
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  attr_accessor :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients
+  attr_accessor :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients, :hide_recipients
 
   EMAILREGEX = /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}$/i
 
@@ -31,6 +31,8 @@ class MailToFriend
 
     @recipient_name = opts[:recipient_name]
     @recipient_name ||= @recipients[0].split('@', 2)[0].titleize unless @recipients.empty?
+
+    @hide_recipients = opts[:hide_recipients] || false
     @message = opts[:message]
   end
 
