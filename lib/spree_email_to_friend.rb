@@ -1,5 +1,6 @@
 require 'spree_core'
 require 'spree_email_to_friend_hooks'
+require 'recaptcha/rails'
 
 module SpreeEmailToFriend
   class Engine < Rails::Engine

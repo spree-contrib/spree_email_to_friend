@@ -1,21 +1,6 @@
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
-
-spec = eval(File.read('spree_email_to_friend.gemspec'))
-
-Rake::GemPackageTask.new(spec) do |p|
-  p.gem_spec = spec
-end
-
-desc "Release to gemcutter"
-task :release => :package do
-  require 'rake/gemcutter'
-  Rake::Gemcutter::Tasks.new(spec).define
-  Rake::Task['gem:push'].invoke
-end
 
 desc "Default Task"
 task :default => [ :spec ]
@@ -37,10 +22,9 @@ task :test_app do
     def tweak_gemfile
       append_file 'Gemfile' do
 <<-gems
-        gem 'spree_core', :path => '#{File.join(SPREE_PATH, 'core')}'
-        gem 'spree_auth', :path => '#{File.join(SPREE_PATH, 'auth')}'
-        gem 'recaptcha', :require => 'recaptcha/rails', :git => 'git://github.com/rfc2822/recaptcha.git', :branch => 'rails3'
-        gem 'spree_email_to_friend', :path => '../..'
+gem 'spree_core', :path => '#{File.join(SPREE_PATH, 'core')}'
+gem 'spree_auth', :path => '#{File.join(SPREE_PATH, 'auth')}'
+gem 'spree_email_to_friend', :path => '#{File.dirname(__FILE__)}'
 gems
       end
     end
