@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_email_to_friend'
-  s.version     = '1.0.0'
+  s.version     = '1.1'
   s.summary     = 'Spree extension to send product recommendations to friends'
   s.homepage    = 'https://github.com/calas/spree-email-to-friend'
   s.required_ruby_version = '>= 1.8.7'
