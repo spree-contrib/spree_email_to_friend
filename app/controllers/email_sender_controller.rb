@@ -13,6 +13,7 @@ class EmailSenderController < Spree::BaseController
 
   def mail_to_friend
     @mail_to_friend = MailToFriend.new(params[:mail_to_friend])
+    @mail_to_friend.host = request.env["HTTP_HOST"]
     respond_to do |format|
       format.html do
         captcha_passed = !Spree::Captcha::Config[:use_captcha] || verify_recaptcha(:private_key => Spree::Captcha::Config[:private_key])
