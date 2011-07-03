@@ -1,3 +1,3 @@
 = Email To Friend
 
-Description goes here
+Spree extension to send product recommendations to friends
