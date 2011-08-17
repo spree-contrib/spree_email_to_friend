@@ -13,8 +13,6 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.has_rdoc = true
-
   s.add_dependency('spree_core', '>= 0.30.1')
   s.add_dependency('spree_auth', '>= 0.30.1')
   s.add_dependency('recaptcha', '>= 0.3.1')
