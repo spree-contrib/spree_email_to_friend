@@ -1,3 +1,4 @@
+"0.70.x" => { :branch => 'master' }
 "0.60.x" => { :version => '1.1', :ref => '34e52d987be882f6cba783144a9ebfff30b90e15' }
 "0.50.x" => { :version => '1.1', :ref => '34e52d987be882f6cba783144a9ebfff30b90e15' }
 "0.40.x" => { :tag => "v1.0.0", :version => "1.0.0" }
