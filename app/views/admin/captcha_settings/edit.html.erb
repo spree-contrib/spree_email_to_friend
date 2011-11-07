@@ -4,6 +4,11 @@
 
 <%= form_tag(admin_captcha_settings_path, :method => :put) do -%>
   <p>
+    <label><%= t('captcha.use_captcha') %>:</label>
+    <label><%= radio_button_tag('preferences[use_captcha]', true, Spree::Captcha::Config[:use_captcha])%> Yes</label> &nbsp;&nbsp;
+    <label><%= radio_button_tag('preferences[use_captcha]', false, !Spree::Captcha::Config[:use_captcha])%> No</label>
+  </p>
+  <p>
     <label><%= t('captcha.public_key') %>:</label>
     <%= text_field_tag('preferences[public_key]', Spree::Captcha::Config[:public_key], :size => 40) %>
   </p>

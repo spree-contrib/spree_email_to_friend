@@ -18,6 +18,7 @@ pt-BR:
     public_key: "Chave pública"
     private_key: "Chave privada"
     manage_keys: "Gerencie suas chaves do recaptcha"
+    use_captcha: "Use Captcha?"
     theme: "Tema"
 
 
