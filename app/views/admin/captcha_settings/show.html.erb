@@ -4,6 +4,10 @@
 
 <table>
   <tr>
+    <th scope="row"><%= t('captcha.use_captcha') %>:</th>
+    <td style="color: <%= Spree::Captcha::Config[:use_captcha] ? 'green' : 'red' %>;"><%= Spree::Captcha::Config[:use_captcha] ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
     <th scope="row"><%= t('captcha.public_key') %>:</th>
     <td><%= Spree::Captcha::Config[:public_key] %></td>
   </tr>

@@ -17,4 +17,5 @@ es:
     public_key: "Llave pública"
     private_key: "Llave privada"
     manage_keys: "Administrar tus llaves de recaptcha."
+    use_captcha: "Use Captcha?"
     theme: "Tema"
