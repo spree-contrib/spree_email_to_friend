@@ -1,2 +1,4 @@
 *.swp
 spec/test_app
+Gemfile.lock
+.rvmrc
