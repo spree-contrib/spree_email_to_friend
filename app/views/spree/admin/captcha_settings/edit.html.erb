@@ -1,4 +1,4 @@
-<%= render :partial => 'admin/shared/configuration_menu' %>
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
 <h1><%= t('captcha.captcha_settings') %></h1>
 
@@ -13,7 +13,7 @@
   </p>
   <p>
     <label><%= t('captcha.theme') %>:</label>
-    <%= select_tag('preferences[theme]', options_for_select(CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme])) %>
+    <%= select_tag('preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme])) %>
   </p>
   <p class="form-buttons">
     <%= button t(:update) %>

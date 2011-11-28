@@ -1,4 +1,4 @@
-class ToFriendMailer < ActionMailer::Base
+class Spree::ToFriendMailer < ActionMailer::Base
   default :from => Spree::Config[:mails_from]
 
   def mail_to_friend(object, mail)

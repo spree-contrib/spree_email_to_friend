@@ -1,9 +1,9 @@
-class EmailSenderController < Spree::BaseController
+class Spree::EmailSenderController < Spree::BaseController
   before_filter :find_object
 
   def send_mail
     if request.get?
-      @mail_to_friend = MailToFriend.new(:sender_email => current_user.try(:email))
+      @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
     else
       mail_to_friend
     end
@@ -11,7 +11,7 @@ class EmailSenderController < Spree::BaseController
 
   private
     def mail_to_friend
-      @mail_to_friend = MailToFriend.new(params[:mail_to_friend])
+      @mail_to_friend = Spree::MailToFriend.new(params[:mail_to_friend])
       @mail_to_friend.host = request.env['HTTP_HOST']
       respond_to do |format|
         format.html do
@@ -35,11 +35,11 @@ class EmailSenderController < Spree::BaseController
 
     #extract send message to make easier to override
     def send_message(object, mail_to_friend)
-      ToFriendMailer.mail_to_friend(object,@mail_to_friend).deliver
+      Spree::ToFriendMailer.mail_to_friend(object,@mail_to_friend).deliver
     end
 
     def find_object
-      class_name = params[:type].titleize.constantize
+      class_name = "Spree::#{(params[:type].titleize)}".constantize
       return false if params[:id].blank?
       @object = class_name.find_by_id(params[:id])
       if class_name.respond_to?('find_by_permalink')

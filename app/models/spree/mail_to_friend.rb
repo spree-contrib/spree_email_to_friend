@@ -1,4 +1,4 @@
-class MailToFriend
+class Spree::MailToFriend
   include ActiveModel::Validations
   include ActiveModel::Conversion
   attr_accessor :host, :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients, :hide_recipients
