@@ -14,6 +14,7 @@ module SpreeEmailToFriend
       #Dir.glob(File.join(File.dirname(__FILE__), "../../app/overrides/*.rb")) do |c|
       #  Rails.application.config.cache_classes ? require(c) : load(c)
       #end
+      Spree::CaptchaConfiguration.find_or_create_by_name("Default spree_captcha configuration")
     end
 
     config.to_prepare &method(:activate).to_proc
