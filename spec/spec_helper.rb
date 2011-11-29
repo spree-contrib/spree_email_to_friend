@@ -1,15 +1,17 @@
-# Configure Rails Environment
-ENV["RAILS_ENV"] = "test"
-
-
-require File.expand_path("../../../config/environment.rb",  __FILE__)
-
-
+# This file is copied to ~/spec when you run 'ruby script/generate rspec'
+# from the project root directory.
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+#include spree's factories
+require 'spree/core/testing_support/factories'
+
+# include local factories
+Dir["#{File.dirname(__FILE__)}/factories/**/*.rb"].each do |f|
+  fp =  File.expand_path(f)
+  require fp
+end
 
 RSpec.configure do |config|
   # == Mock Framework
@@ -21,11 +23,18 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.mock_with :rspec
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
+  # examples within a transaction, comment the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+Spree::Zone.class_eval do
+  def self.global
+    find_by_name("GlobalZone") || Factory(:global_zone)
+  end
+end
+
+@configuration ||= Spree::AppConfiguration.find_or_create_by_name("Default configuration")
