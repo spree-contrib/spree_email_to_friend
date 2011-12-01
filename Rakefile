@@ -3,13 +3,11 @@ require 'rake/testtask'
 require 'rake/packagetask'
 require 'rubygems/package_task'
 require 'rspec/core/rake_task'
-require 'cucumber/rake/task'
-require 'spree_core/testing_support/common_rake'
+require 'spree/core/testing_support/common_rake'
 
 RSpec::Core::RakeTask.new
-Cucumber::Rake::Task.new
 
-task :default => [:spec, :cucumber ]
+task :default => [:spec]
 
 spec = eval(File.read('spree_email_to_friend.gemspec'))
 
