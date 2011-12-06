@@ -1,4 +1,4 @@
-class Spree::CaptchaConfiguration < Spree::Configuration
+class Spree::CaptchaConfiguration < Spree::Preferences::Configuration
   THEMES = ['red', 'white', 'blackglass', 'clean', 'custom']
 
   # this keys works for localhost
