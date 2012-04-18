@@ -1,5 +1,5 @@
 class Spree::ToFriendMailer < ActionMailer::Base
-  default :from => Spree::Config[:mails_from]
+  default :from => Spree::MailMethod.current.preferred_mails_from
 
   def mail_to_friend(object, mail)
     @object = object
