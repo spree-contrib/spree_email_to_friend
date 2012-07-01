@@ -1,15 +1,17 @@
-class Spree::EmailSenderController < Spree::BaseController
-  before_filter :find_object
+class Spree
+  class EmailSenderController < Spree::BaseController
+    before_filter :find_object
 
-  def send_mail
-    if request.get?
-      @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
-    else
-      mail_to_friend
+    def send_mail
+      if request.get?
+        @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
+      else
+        mail_to_friend
+      end
     end
-  end
 
-  private
+    private
+
     def mail_to_friend
       @mail_to_friend = Spree::MailToFriend.new(params[:mail_to_friend])
       @mail_to_friend.host = request.env['HTTP_HOST']
@@ -35,7 +37,7 @@ class Spree::EmailSenderController < Spree::BaseController
 
     #extract send message to make easier to override
     def send_message(object, mail_to_friend)
-      Spree::ToFriendMailer.mail_to_friend(object,@mail_to_friend).deliver
+      Spree::ToFriendMailer.mail_to_friend(object, mail_to_friend).deliver
     end
 
     def find_object
@@ -49,4 +51,5 @@ class Spree::EmailSenderController < Spree::BaseController
         @object ||= class_name.get_by_param(params[:id])
       end
     end
+  end
 end
