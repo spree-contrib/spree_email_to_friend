@@ -1,4 +1,4 @@
-class Spree
+module Spree
   class EmailSenderController < Spree::BaseController
     before_filter :find_object
 
