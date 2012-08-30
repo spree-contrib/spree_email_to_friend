@@ -3,10 +3,6 @@ class Spree::EmailSenderController < Spree::BaseController
 
   def send_mail
     if request.get?
-      # google bot seems to get into this error
-      # if we are called for a non existing product, @object is nil and it will raise an 
-      # error trying to render the view.
-      raise ActiveRecord::RecordNotFound if @object.nil? 
       @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
     else
       mail_to_friend
@@ -14,6 +10,7 @@ class Spree::EmailSenderController < Spree::BaseController
   end
 
   private
+
     def mail_to_friend
       @mail_to_friend = Spree::MailToFriend.new(params[:mail_to_friend])
       @mail_to_friend.host = request.env['HTTP_HOST']
@@ -52,5 +49,8 @@ class Spree::EmailSenderController < Spree::BaseController
       if class_name.respond_to?('get_by_param')
         @object ||= class_name.get_by_param(params[:id])
       end
+      # Display 404 page if object is not found.
+      raise ActiveRecord::RecordNotFound if @object.nil?
     end
+
 end
