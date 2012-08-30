@@ -12,7 +12,7 @@ en:
     send_message: "Tell your friend!"
     mail_sent_to: "Mail sent to %{email} "
     send_to_other: "Send to other friend"
-    you_would_like_this: "I think you would like this item"
+    you_would_like_this: "%{sender_name} wants you to see this item at %{site}"
 
   captcha:
     captcha_settings: "Captcha Settings"
