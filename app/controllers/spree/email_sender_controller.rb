@@ -5,8 +5,8 @@ class Spree::EmailSenderController < Spree::BaseController
     if request.get?
       # google bot seems to get into this error
       # if we are called for a non existing product, @object is nil and it will raise an 
-      # error trying to render the view. 
-      render :nothing => true, :status => 200, :content_type => 'text/html' and return if @object.nil?
+      # error trying to render the view.
+      raise ActiveRecord::RecordNotFound if @object.nil? 
       @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
     else
       mail_to_friend
