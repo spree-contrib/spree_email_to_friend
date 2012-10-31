@@ -1,22 +1,48 @@
 <%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
-<h1><%= t('captcha.captcha_settings') %></h1>
+<% content_for :page_title do %>
+  <%= t('captcha.captcha_settings') %>
+<% end %>
 
-<%= form_tag(admin_captcha_settings_path, :method => :put) do -%>
-  <p>
-    <label><%= t('captcha.public_key') %>:</label>
-    <%= text_field_tag('preferences[public_key]', Spree::Captcha::Config[:public_key], :size => 40) %>
-  </p>
-  <p>
-    <label><%= t('captcha.private_key') %>:</label>
-    <%= text_field_tag('preferences[private_key]', Spree::Captcha::Config[:private_key], :size => 40)%>
-  </p>
-  <p>
-    <label><%= t('captcha.theme') %>:</label>
-    <%= select_tag('preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme])) %>
-  </p>
-  <p class="form-buttons">
-    <%= button t(:update) %>
-    <%= t(:or) %> <%= link_to t(:cancel), admin_captcha_settings_url %>
-  </p>
+<%= form_tag(admin_captcha_settings_path, :method => :put) do |f| -%>
+
+  <fieldset class="no-border-top">
+    <div data-hook="admin_captcha_settings" class="row">
+
+      <div class="field choices">
+        <label><%= t('captcha.use_captcha') %></label><br>
+        <%= label_tag do %>
+          <%= radio_button_tag 'preferences[use_captcha]', true, Spree::Captcha::Config[:use_captcha] %>
+          <%= t(:yes) %>
+        <% end %>
+
+        <%= label_tag do %>
+          <%= radio_button_tag 'preferences[use_captcha]', false, !Spree::Captcha::Config[:use_captcha] %>
+          <%= t(:no) %>
+        <% end %>
+      </div>
+
+      <div data-hook="public_key" class="field">
+        <label><%= t('captcha.public_key') %></label><br>
+        <%= text_field_tag('preferences[public_key]', Spree::Captcha::Config[:public_key], :size => 40) %>
+      </div>
+
+      <div data-hook="private_key" class="field">
+        <label><%= t('captcha.private_key') %></label><br>
+        <%= text_field_tag('preferences[private_key]', Spree::Captcha::Config[:private_key], :size => 40) %>
+      </div>
+
+      <div data-hook="private_key" class="field">
+        <label><%= t('captcha.theme') %>:</label><br>
+        <%= select_tag('preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: "select2") %>
+      </div>
+
+    </div>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button t(:update), 'icon-refresh' %>
+    </div>
+
+  </fieldset>
+
 <% end -%>
