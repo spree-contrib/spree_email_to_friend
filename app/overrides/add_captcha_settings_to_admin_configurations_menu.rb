@@ -1,5 +1,5 @@
-Deface::Override.new(:virtual_path => "spree/admin/configurations/index",
-                     :name => "converted_admin_configurations_menu_384123912",
-                     :insert_after => "[data-hook='admin_configurations_menu'], #admin_configurations_menu[data-hook]",
-                     :text => "<%= configurations_menu_item(I18n.t('captcha.captcha_settings'), admin_captcha_settings_path, I18n.t('captcha.manage_keys')) %>",
+Deface::Override.new(:virtual_path => "spree/admin/shared/_configuration_menu",
+                     :name => "add_captcha_admin_option",
+                     :insert_bottom => "[data-hook='admin_configurations_sidebar_menu']",
+                     :text => "<%= configurations_sidebar_menu_item t('captcha.captcha_settings'), edit_admin_captcha_settings_path %>",
                      :disabled => false)

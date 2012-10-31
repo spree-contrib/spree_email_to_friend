@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_email_to_friend'
-  s.version     = '1.2'
+  s.version     = '1.3'
   s.summary     = 'Spree extension to send product recommendations to friends'
   s.description = 'Spree extension to send product recommendations to friends'
   s.required_ruby_version = '>= 1.8.7'
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 1.2.0'
+  s.add_dependency 'spree_core', '~> 1.3.0'
   s.add_dependency 'recaptcha', '>= 0.3.1'
   s.add_development_dependency 'rspec-rails'
 end

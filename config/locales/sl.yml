@@ -1,0 +1,23 @@
+---
+sl:
+  email_to_friend:
+    send_to_friend: "Pošlji prijatelju"
+    tell_about: "Povej prijatelju o: %{product}"
+    sender_name: "Tvoje ime"
+    sender_email: "Tvoj email naslov"
+    recipient_name: "Ime prejemnika"
+    recipient_email: "Email prejemnika"
+    recipient_emails: "Email naslovi (ločeni z vejico)"
+    message: "Sporočilo"
+    send_message: "Povej prijatelju!"
+    mail_sent_to: "Sporočilo poslano na %{email} "
+    send_to_other: "Pošlji novemu prijatelju"
+    you_would_like_this: "%{sender_name} ti pošilja zanimivost s strani %{site}"
+
+  captcha:
+    captcha_settings: "CAPTCHA nastavitve"
+    public_key: "Javni ključ"
+    private_key: "Zasebni ključ"
+    manage_keys: "Uredi svoje (re)captcha ključe"
+    use_captcha: "Uporabi CAPTCHA zaščito?"
+    theme: "Tema"
