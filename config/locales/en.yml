@@ -19,4 +19,5 @@ en:
     public_key: "Public key"
     private_key: "Private key"
     manage_keys: "Manage your (re)captcha keys"
+    use_captcha: "Use Captha?"
     theme: "Theme"
