@@ -1,0 +1,50 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= t('cloudsponge.cloudsponge_settings') %>
+<% end %>
+
+<%= form_tag(admin_cloudsponge_settings_path, :method => :put) do |f| -%>
+<br/>
+<div class="field choices">
+  <label><%= t('cloudsponge.use_cloudsponge') %></label><br>
+  <%= label_tag do %>
+    <%= radio_button_tag 'preferences[use_cloudsponge]', true, Spree::Cloudsponge::Config[:use_cloudsponge] %>
+    <%= t(:yes) %>
+  <% end %>
+
+  <%= label_tag do %>
+    <%= radio_button_tag 'preferences[use_cloudsponge]', false, !Spree::Cloudsponge::Config[:use_cloudsponge] %>
+    <%= t(:no) %>
+  <% end %>
+</div>
+<br/>
+<h1>What is CloudSponge?</h1>
+<br/>
+CloudSponge is free to try for 30 days! CloudSponge provides software that enables your users to send links for products on your website to their contacts from a variety of the most popular webmail services including Yahoo, Hotmail and Gmail and desktop address books such as Outlook and Mac Address Book.<br/>
+<br/>
+<a href='https://www.cloudsponge.com/sign-up?utm_source=sweet_spree&utm_medium=partner&utm_campaign=integrator' target='_blank'><img src='/assets/spree/cs_signup.png'></a><br/>
+<br/>
+Once you've signed up just enter in your domain key and domain password below and the "Tell a friend" links from the email_to_friend extension will use CloudSponge instead of a standard email input box!<br/>
+
+  <fieldset class="no-border-top">
+    <div data-hook="admin_cloudsponge_settings" class="row">
+
+      <div data-hook="domain_key" class="field">
+        <label><%= t('cloudsponge.domain_key') %></label><br>
+        <%= text_field_tag('preferences[domain_key]', Spree::Cloudsponge::Config[:domain_key], :size => 40) %>
+      </div>
+
+      <div data-hook="domain_password" class="field">
+        <label><%= t('cloudsponge.domain_password') %></label><br>
+        <%= text_field_tag('preferences[domain_password]', Spree::Cloudsponge::Config[:domain_password], :size => 40) %>
+      </div>
+    </div>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button t(:update), 'icon-refresh' %>
+    </div>
+
+  </fieldset>
+
+<% end -%>

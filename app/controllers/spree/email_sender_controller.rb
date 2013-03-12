@@ -6,9 +6,17 @@ class Spree::EmailSenderController < Spree::BaseController
 
   def send_mail
     if request.get?
-      @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
+      if Spree::Cloudsponge::Config[:use_cloudsponge]
+        @mail_to_cloud = Spree::MailToCloud.new(:sender_email => current_user.try(:email))
+      else
+        @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
+      end
     else
-      mail_to_friend
+      if Spree::Cloudsponge::Config[:use_cloudsponge]
+        mail_to_cloud
+      else
+        mail_to_friend
+      end
     end
   end
 
@@ -41,7 +49,36 @@ class Spree::EmailSenderController < Spree::BaseController
     def send_message(object, mail_to_friend)
       Spree::ToFriendMailer.mail_to_friend(object,@mail_to_friend).deliver
     end
+    
+    #begin private CloudSponge methods
+    def mail_to_cloud
+      @mail_to_cloud = Spree::MailToFriend.new(params[:mail_to_cloud])
+      @mail_to_cloud.host = request.env['HTTP_HOST']
+      respond_to do |format|
+        format.html do
+          if @mail_to_cloud.valid?
+            flash[:notice] = I18n.t('cloudsponge.mail_sent_to', :email => @mail_to_cloud.recipient_email).html_safe
+            flash[:notice] << ActionController::Base.helpers.link_to(I18n.t('cloudsponge.send_to_other'), email_to_cloud_path(@object.class.name.split("::").last.downcase, @object)).html_safe
 
+            send_cloud_message(@object, @mail_to_cloud)
+
+            redirect_to @object
+          else
+            render :action => :send_mail
+          end
+        end
+      end
+    end
+    
+    def send_cloud_message(object, mail_to_cloud)
+      @mail_to_cloud.recipients.each do |email_address|
+        @temp_mail_to_cloud = mail_to_cloud
+        @temp_mail_to_cloud.recipient_email = email_address
+        Spree::ToFriendMailer.mail_to_cloud(object,@temp_mail_to_cloud).deliver
+      end
+    end
+    #end private CloudSponge methods
+    
     def find_object
       class_name = "Spree::#{(params[:type].titleize)}".constantize
       return false if params[:id].blank?
