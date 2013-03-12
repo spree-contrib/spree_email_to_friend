@@ -1,0 +1,62 @@
+<div id="waitingDiv"><b>Loading Your Address Book...</b><br/><i>(Larger contact lists may take longer to load)</i></div>
+<div id="contentDiv">
+	<br/>
+	If you have popups disabled you will need to enable them for the authorization window to appear..<br/>
+	If you do not see the authorization popup, click <a target='_blank' href='<%= @authURL %>'><b>here</b></a> to open it.<br/>
+	<br/>
+	<input type="button" value="Cancel" onclick="closeWindow()">
+</div>
+
+
+<script>
+	function authPopup(){
+		window.open('<%= @authURL %>', '', 'width=500,height=400');
+	}
+	authPopup();
+	
+	jQuery("#importText").html("<b>Waiting for Authorization...</b><br><small><i>powered by</i> <a target='new' href='http://www.cloudsponge.com'>Cloudsponge</a></small>");
+</script>
+
+<script>
+	var i = 0;
+	var authReceived = false;
+	var intervalID = setInterval(checkAuth, 1000);
+		
+	function checkAuth(){
+		i = i + 1;
+		tempString = "Loading Your Address Book"
+		for (j=0; j<(i%6); j++)
+			tempString = tempString + ".";
+		jQuery("#waitingDiv").html("<b>" + tempString + "</b><br/><i>(Larger contact lists may take longer to load)</i>");
+				
+		jQuery.ajax("/importCheck/<%= @importID %>", {
+			complete:function(jqXHR, textStatus) {
+				if (jqXHR.responseText == "true")
+					authReceived = true;
+			}
+		})
+		
+		if (authReceived){
+			clearInterval(intervalID);
+			jQuery("#waitingDiv").html("<b>Authorization Received!</b>");
+			jQuery("#importText").html("<b>Loading Contacts. Please wait...</b>");
+			jQuery.ajax("/importContacts/<%= @importID %>?service=<%= params[:service] %><% if !(params[:new_client_waiting_list_id].nil?) %>&new_client_waiting_list_id=<%= params[:new_client_waiting_list_id] %><% end %>", {
+				complete:function(jqXHR, textStatus) {
+					document.getElementById("waitingDiv").style.display = 'none';	
+					jQuery("#contentDiv").html(jqXHR.responseText);
+				}
+			})
+		}
+	}
+</script>
+
+<script>
+	function closeWindow(){
+		document.getElementById("importGMAILLogo").style.display = 'none';
+		document.getElementById("importWINDOWSLIVELogo").style.display = 'none';
+		document.getElementById("importText").style.display = 'none';
+		document.getElementById("importDiv").style.display = 'none';
+		document.getElementById("addressSelectionDiv").style.display = 'block';	
+		clearInterval(intervalID);
+	}
+</script>

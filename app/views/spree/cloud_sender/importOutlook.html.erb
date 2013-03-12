@@ -1,0 +1,95 @@
+<div id="waitingDiv"><b>Loading Your Address Book...</b><br/><i>(Larger contact lists may take longer to load)</i></div>
+<div id="contentDiv">
+	<br/>
+	<!--[if !IE]> Firefox and others will use outer object -->
+	<object classid="java:ContactsApplet"
+	  type="application/x-java-applet"
+	  archive="<%= @authURL %>"
+	  height="1"
+	  width="1">
+	  <!-- Konqueror browser needs the following param -->
+	  <param name="archive" value="<%= @authURL %>" />
+	  <param name="cookieValue" value="document.cookie"/>
+	  <param name="importId" value="<%= @importID %>"/>
+	  <param name="MAYSCRIPT" value="true">
+	<!--<![endif]-->
+
+	  <!-- MSIE (Microsoft Internet Explorer) will use inner object -->
+	  <object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+	    codebase="http://java.sun.com/update/1.6.0/jinstall-6u30-windows-i586.cab"
+	    height="0"
+	    width="0" >
+	    <param name="code" value="ContactsApplet" />
+	    <param name="archive" value="<%= @authURL %>" />
+	    <param name="cookieValue" value="document.cookie"/>
+	    <param name="importId" value="<%= @importID %>"/>
+	   <param name="MAYSCRIPT" value="true">
+
+	    <!-- Chrome falls through to this innermost applet -->
+	    <applet archive="url" code="ContactsApplet" height="1" width="1" MAYSCRIPT>
+	      <param name="cookieValue" value="document.cookie" />
+	      <param name="importId" value="<%= @importID %>"/>
+	      <param name="MAYSCRIPT" value="true">
+	      <strong>
+	        This browser does not have a Java Plug-in.<br />
+	        <a href="http://java.sun.com/products/plugin/downloads/index.html">
+	          Get the latest Java Plug-in here.
+	        </a>
+	      </strong>
+	    </applet>
+	  </object>
+
+	<!--[if !IE]> close outer object -->
+	</object>
+	<!--<![endif]-->
+	<br/>
+	<input type="button" value="Cancel" onclick="closeWindow()">
+</div>
+
+
+<script>	
+	jQuery("#importText").html("<b>Waiting for Authorization...</b>");
+</script>
+
+<script>
+	var i = 0;
+	var authReceived = false;
+	var intervalID = setInterval(checkAuth, 1000);
+		
+	function checkAuth(){
+		i = i + 1;
+		tempString = "Loading Your Address Book"
+		for (j=0; j<(i%6); j++)
+			tempString = tempString + ".";
+		jQuery("#waitingDiv").html("<b>" + tempString + "</b><br/><i>(Larger contact lists may take longer to load)</i>");
+				
+		jQuery.ajax("/importCheck/<%= @importID %>", {
+			complete:function(jqXHR, textStatus) {
+				if (jqXHR.responseText == "true")
+					authReceived = true;
+			}
+		})
+		
+		if (authReceived){
+			clearInterval(intervalID);
+			jQuery("#waitingDiv").html("<b>Authorization Received!</b>");
+			jQuery("#importText").html("<b>Loading Contacts. Please wait...</b>");
+			jQuery.ajax("/importContacts/<%= @importID %>?service=OUTLOOK<% if !(params[:new_client_waiting_list_id].nil?) %>&new_client_waiting_list_id=<%= params[:new_client_waiting_list_id] %><% end %>", {
+				complete:function(jqXHR, textStatus) {
+					document.getElementById("waitingDiv").style.display = 'none';	
+					jQuery("#contentDiv").html(jqXHR.responseText);
+				}
+			})
+		}
+	}
+</script>
+
+<script>
+	function closeWindow(){
+		document.getElementById("importOutlookLogo").style.display = 'none';
+		document.getElementById("importText").style.display = 'none';
+		document.getElementById("importDiv").style.display = 'none';
+		document.getElementById("addressSelectionDiv").style.display = 'block';	
+		clearInterval(intervalID);
+	}
+</script>

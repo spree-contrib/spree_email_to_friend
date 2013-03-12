@@ -1,0 +1,14 @@
+I think you would like this item:
+
+  * <%= product.name %>
+
+<% unless mail.message.blank? -%>
+<%= mail.message %>
+<% end -%>
+
+<%= mail.sender_name %>
+
+Click the link below to view the <%= product.name %> page.
+<%= spree.product_url(product) %>
+
+For more online shopping, visit <%= spree.products_url %>

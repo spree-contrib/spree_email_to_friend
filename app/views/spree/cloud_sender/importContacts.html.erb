@@ -1,0 +1,104 @@
+<script>
+	contactCount = 0;
+	inviteeCount = 0;
+	emailList = new Array();
+	
+	function addContact(div, full_name, email){
+		div.style.display='none';
+		inviteeDiv = document.getElementById("inviteeDiv");
+		contactCount = contactCount - 1;
+		document.getElementById("contactCountSpan").innerHTML = contactCount;
+		inviteeCount = inviteeCount + 1;
+		document.getElementById("inviteeCountSpan").innerHTML = inviteeCount;
+		inviteeDiv.innerHTML = inviteeDiv.innerHTML + "<div style='cursor:pointer;overflow:auto' onmouseover='this.style.background=\"lightgray\"' onmouseout='this.style.background=\"white\"' onclick='removeContact(this,\"" + email + "\")'><span style='float:left'>&nbsp; <b>-</b> &nbsp; " + full_name + "</span> <span style='float:right'>(" + email + ")</span>";
+		emailList.push(email);
+	}
+	
+	function removeContact(div, email){
+		div.style.display='none';
+		contactDiv = document.getElementById("contactDiv");
+		contactCount = contactCount + 1;
+		document.getElementById("contactCountSpan").innerHTML = contactCount;
+		inviteeCount = inviteeCount - 1;
+		document.getElementById("inviteeCountSpan").innerHTML = inviteeCount;
+		document.getElementById(email).style.display = 'block';
+		emailList.splice(emailList.indexOf(email), 1);
+	}
+	
+	function addAllContacts(){
+		contactDiv = document.getElementById("contactDiv");
+		subDivs = contactDiv.getElementsByTagName("div");
+		for (i=0; i < subDivs.length; i++){
+			displayValue = window.getComputedStyle(subDivs[i], null).getPropertyValue("display");
+			if (displayValue != 'none')
+				subDivs[i].onclick();
+		}
+	}
+
+	function removeAllInvitees(){
+		inviteeDiv = document.getElementById("inviteeDiv");
+		subDivs = inviteeDiv.getElementsByTagName("div");
+		for (i=0; i < subDivs.length; i++){
+			displayValue = window.getComputedStyle(subDivs[i], null).getPropertyValue("display");
+			if (displayValue != 'none')
+				subDivs[i].onclick();
+		}
+	}
+
+	jQuery("#importText").html("<b>Please select the contacts you'd like to tell about this product below:</b><br><small><i>powered by</i> <a target='new' href='http://www.cloudsponge.com'>Cloudsponge</a></small>");
+</script>
+
+<div style="border:1px solid black; width:300px; height:206px; float:left;">
+	<div style="background-color:lightgray;font-size:15px"><b>Contacts (<span id="contactCountSpan">0</span>)</b></div>
+	<div style="background-color:lightgray;font-size:12px;cursor: pointer" onclick="addAllContacts();">+ Add All</div>
+	<div id="contactDiv" style="overflow:auto;height:173px;font-size:11px;">
+		<% contactCount = 0 %>
+		<% @contacts.each do |contact| %>
+			<% if !(contact["email"][0].nil?) && !(contact["first_name"].nil?) %>
+				<% contactCount = contactCount + 1 %>
+				<% full_name = contact["first_name"] + " " + contact["last_name"] %>
+				<% email = contact["email"][0]["address"] %>
+				<div id="<%= email %>" style="cursor:pointer;overflow:auto" onmouseover="this.style.background='lightgray'" onmouseout="this.style.background='white'" onclick="addContact(this, '<%= full_name %>','<%= contact["email"][0]["address"] %>');">
+					<span style="float:left;">&nbsp; <b>+</b> &nbsp; <%= full_name %></span> <span style="float:right;">(<%= email %>)</span>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<div style="width:50px; float:left">&nbsp;</div>
+<div style="border:1px solid black; width:300px; height:206px; float:left; overflow:auto">
+	<div style="background-color:lightgray;font-size:15px"><b>Invitees (<span id="inviteeCountSpan">0</span>)</b></div>
+	<div style="background-color:lightgray;font-size:12px;cursor: pointer" onclick="removeAllInvitees();">+ Remove All</div>
+	<div id="inviteeDiv" style="overflow:auto;height:173px;font-size:11px;"></div>
+</div>
+<div style="clear:both">&nbsp;</div>
+<br/>
+<form action="/invite/" method="post">
+	<input type="hidden" id="client_email_list" name="client_email_list" value="">
+	<% if !(params[:new_client_waiting_list_id].nil?) %>
+		<input type="hidden" name="new_client_waiting_list_id" id="new_client_waiting_list_id" value="<%= params[:new_client_waiting_list_id] %>">
+	<% end %>
+	<input type="button" value="Tell Your Friends!" onclick="inviteContacts(this.form)"> &nbsp; &nbsp;
+	<input type="button" value="Cancel" onclick="closeWindow()">
+</form>
+
+<script>
+	contactCount = <%= contactCount %>;
+	document.getElementById("contactCountSpan").innerHTML = contactCount;
+</script>
+
+<script>
+	function inviteContacts(frm){
+		//client_email_list = document.getElementById("client_email_list");
+		//client_email_list.value = emailList.join();
+		recipient_email_list = emailList.join()
+		
+		if (recipient_email_list == "")
+			alert("You must select at least one contact!");
+		else{
+			document.getElementById("mail_to_cloud_recipient_email").value = recipient_email_list;
+			document.getElementById("new_mail_to_cloud").submit();
+		}
+			//frm.submit();
+	}
+</script>
