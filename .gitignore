@@ -1,4 +1,5 @@
 *.swp
+*.DS_Store
 spec/test_app
 Gemfile.lock
 .rvmrc

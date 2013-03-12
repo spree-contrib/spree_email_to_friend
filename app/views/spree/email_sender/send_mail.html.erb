@@ -1,31 +1,76 @@
 <h1><%= t('email_to_friend.tell_about', :product => @object.name) %></h1>
 
-<%= form_for(@mail_to_friend, :url => email_to_friend_path(params[:type], @object)) do |f| -%>
-  <%= render 'spree/shared/error_messages', :target => @mail_to_friend %>
-  <p>
-    <%= f.label(:sender_name, t('email_to_friend.sender_name')) %><br/>
-    <%= f.text_field(:sender_name) %>
-  </p>
-  <p>
-    <%= f.label(:sender_email, t('email_to_friend.sender_email')) %><br/>
-    <%= f.text_field(:sender_email) %>
-  </p>
-  <p>
-    <%= f.label(:recipient_name, t('email_to_friend.recipient_name')) %><br/>
-    <%= f.text_field(:recipient_name) %>
-  </p>
-  <p>
-    <%= f.label(:recipient_email, t('email_to_friend.recipient_email')) %><br/>
-    <%= f.text_field(:recipient_email) %>
-  </p>
-  <p>
-    <%= f.label(:message, t('email_to_friend.message')) %><br/>
-    <%= f.text_area(:message) %>
-  </p>
-  <% if Spree::Captcha::Config[:use_captcha] %>
-    <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
-  <% end %>
-  <p>
-    <%= f.submit t('email_to_friend.send_message') %>
-  </p>
+<% if Spree::Cloudsponge::Config[:use_cloudsponge] %>
+  <%= javascript_include_tag "store/cloud_sender" %>
+
+  <%= form_for(@mail_to_cloud, :url => email_to_friend_path(params[:type], @object)) do |f| -%>
+    <%= render 'spree/shared/error_messages', :target => @mail_to_cloud %>
+
+	<b><%= f.label(:sender_name, t('cloudsponge.sender_name')) %></b><br/><%= f.text_field(:sender_name) %><br/>
+	<br/>
+	<b><%= f.label(:sender_email, t('cloudsponge.sender_email')) %></b><br/><%= f.text_field(:sender_email) %><br/>
+	<br/>
+	<b><%= f.label(:message, t('cloudsponge.message')) %></b><br/>
+	<%= f.text_area(:message, :cols => 50, :rows => 4) %><br/>
+	<br/>
+	<div id="addressSelectionDiv">
+		<b>Look up contacts in your address book by clicking the appropriate logo:</b><br/>
+		<small><i>powered by</i> <a target='new' href='http://www.cloudsponge.com'>Cloudsponge</a></small><br/>
+		<br/>
+
+		<%= image_tag "store/gmail_logo.jpg", :height => 30, :class => "holderWhite", :onclick => "importGmail('GMAIL')", :style => "cursor:pointer" %>
+		&nbsp; &nbsp; &nbsp;
+		<%= image_tag "store/windows_logo.png", :height => 30, :class => "holderWhite", :onclick => "importGmail('WINDOWSLIVE')", :style => "cursor:pointer" %>
+		&nbsp; &nbsp; &nbsp;
+		<%= image_tag "store/aol_logo.jpg", :height => 30, :class => "holderWhite", :onclick => "showAOLLogin()", :style => "cursor:pointer" %>
+		&nbsp; &nbsp; &nbsp;
+		<%= image_tag "store/outlook_logo.png", :height => 30, :class => "holderWhite", :onclick => "importOutlook()", :style => "cursor:pointer" %>
+		&nbsp; &nbsp; &nbsp;
+		<%= image_tag "store/osx_logo.jpg", :height => 30, :class => "holderWhite", :onclick => "importOSX()", :style => "cursor:pointer" %><br/>
+		<br/>
+		<b>OR</b> you can just type one or more emails below:<br/>
+		<b>Your Friend's Email:</b>&nbsp; <i>(separate multiple emails with a comma)</i><br/><%= f.text_field(:recipient_email) %><br/>
+		<br/>
+		<%= f.submit t('cloudsponge.send_message') %>
+	</div>
+	<div id="importGMAILLogo" style="display:none;float:left"><%= image_tag "store/gmail_logo.jpg", :height => 50 %></div>
+	<div id="importWINDOWSLIVELogo" style="display:none;float:left"><%= image_tag "store/windows_logo.png", :height => 50 %></div>
+	<div id="importOutlookLogo" style="display:none;float:left"><%= image_tag "store/outlook_logo.png", :height => 50 %></div>
+	<div id="importOSXLogo" style="display:none;float:left"><%= image_tag "store/osx_logo.jpg", :height => 50 %></div>
+	<div id="importAOLLogo" style="display:none;float:left"><%= image_tag "store/aol_logo.jpg", :height => 50 %></div>
+	<div style="float:left;width:25px">&nbsp;</div>
+	<div id="importText" style="display:none;float:left;">&nbsp;</div>
+	<div style="clear:both">&nbsp;</div>
+	<div id="importDiv" style="display:none;padding:10px;width:690px;min-height:200px"></div>
 <% end -%>
+<% else %>
+  <%= form_for(@mail_to_friend, :url => email_to_friend_path(params[:type], @object)) do |f| -%>
+    <%= render 'spree/shared/error_messages', :target => @mail_to_friend %>
+    <p>
+      <%= f.label(:sender_name, t('email_to_friend.sender_name')) %><br/>
+      <%= f.text_field(:sender_name) %>
+    </p>
+    <p>
+      <%= f.label(:sender_email, t('email_to_friend.sender_email')) %><br/>
+      <%= f.text_field(:sender_email) %>
+    </p>
+    <p>
+      <%= f.label(:recipient_name, t('email_to_friend.recipient_name')) %><br/>
+      <%= f.text_field(:recipient_name) %>
+    </p>
+    <p>
+      <%= f.label(:recipient_email, t('email_to_friend.recipient_email')) %><br/>
+      <%= f.text_field(:recipient_email) %>
+    </p>
+    <p>
+      <%= f.label(:message, t('email_to_friend.message')) %><br/>
+      <%= f.text_area(:message) %>
+    </p>
+    <% if Spree::Captcha::Config[:use_captcha] %>
+      <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
+    <% end %>
+    <p>
+      <%= f.submit t('email_to_friend.send_message') %>
+    </p>
+  <% end -%>
+<% end %>

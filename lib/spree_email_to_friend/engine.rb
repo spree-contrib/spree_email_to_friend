@@ -1,6 +1,11 @@
 require 'recaptcha/rails'
+require 'httpclient'
+require 'cloudsponge'
 
 module Spree::Captcha
+end
+
+module Spree::Cloudsponge
 end
 
 module SpreeEmailToFriend
@@ -11,6 +16,10 @@ module SpreeEmailToFriend
 
     initializer "spree.email_to_friend.preferences", :after => "spree.environment" do |app|
       Spree::Captcha::Config = Spree::CaptchaConfiguration.new
+    end
+    
+    initializer "spree.email_to_cloud.preferences", :after => "spree.environment" do |app|
+      Spree::Cloudsponge::Config = Spree::CloudspongeConfiguration.new
     end
 
     def self.activate
