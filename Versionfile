@@ -1,5 +1,6 @@
-"1.3.x"  => { :branch => 'master' }
-"1.2.x"  => { :ref => 'f9a3c2a9f0305fec39ca2a473cf870120f259228' }
+"2.0.0"  => { :branch => 'master' }
+"1.3.x"  => { :branch => '1-3-stable' }
+"1.2.x"  => { :branch => '1-2-stable' }
 "1.1.x"  => { :ref => 'c8fec9a5df95446d885be0d869d7023307ee05a4' }
 "1.0.x"  => { :ref => 'adcce8a351b14e7f1e6832bbe2424f0098bfd73b' }
 "0.70.x" => { :ref => 'aa68252f46eebe63243ea417b69f1bc1cb149d10' }
