@@ -8,7 +8,7 @@ Installation
 
 Add the following to your <code>Gemfile</code>
 
-    gem 'spree_email_to_friend', :git => 'git://github.com/spree/spree_email_to_friend.git'
+    gem 'spree_email_to_friend', :git => 'git://github.com/spree/spree_email_to_friend.git', :branch => "1-2-stable"
 
 Run
 
