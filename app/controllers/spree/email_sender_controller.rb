@@ -6,7 +6,7 @@ class Spree::EmailSenderController < Spree::BaseController
 
   def send_mail
     if request.get?
-      @mail_to_friend = Spree::MailToFriend.new(:sender_email => current_user.try(:email))
+      @mail_to_friend = Spree::MailToFriend.new(:sender_email => spree_current_user.try(:email))
     else
       mail_to_friend
     end
