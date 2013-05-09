@@ -1,31 +1,31 @@
-<h1><%= t('email_to_friend.tell_about', :product => @object.name) %></h1>
+<h1><%= Spree.t('email_to_friend.tell_about', :product => @object.name) %></h1>
 
 <%= form_for(@mail_to_friend, :url => email_to_friend_path(params[:type], @object)) do |f| -%>
   <%= render 'spree/shared/error_messages', :target => @mail_to_friend %>
   <p>
-    <%= f.label(:sender_name, t('email_to_friend.sender_name')) %><br/>
+    <%= f.label(:sender_name, Spree.t('email_to_friend.sender_name')) %><br/>
     <%= f.text_field(:sender_name) %>
   </p>
   <p>
-    <%= f.label(:sender_email, t('email_to_friend.sender_email')) %><br/>
+    <%= f.label(:sender_email, Spree.t('email_to_friend.sender_email')) %><br/>
     <%= f.text_field(:sender_email) %>
   </p>
   <p>
-    <%= f.label(:recipient_name, t('email_to_friend.recipient_name')) %><br/>
+    <%= f.label(:recipient_name, Spree.t('email_to_friend.recipient_name')) %><br/>
     <%= f.text_field(:recipient_name) %>
   </p>
   <p>
-    <%= f.label(:recipient_email, t('email_to_friend.recipient_email')) %><br/>
+    <%= f.label(:recipient_email, Spree.t('email_to_friend.recipient_email')) %><br/>
     <%= f.text_field(:recipient_email) %>
   </p>
   <p>
-    <%= f.label(:message, t('email_to_friend.message')) %><br/>
+    <%= f.label(:message, Spree.t('email_to_friend.message')) %><br/>
     <%= f.text_area(:message) %>
   </p>
   <% if Spree::Captcha::Config[:use_captcha] %>
     <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
   <% end %>
   <p>
-    <%= f.submit t('email_to_friend.send_message') %>
+    <%= f.submit Spree.t('email_to_friend.send_message') %>
   </p>
 <% end -%>
