@@ -1,22 +1,23 @@
 ---
 de:
-  email_to_friend:
-    send_to_friend: "Per Email Empfehlen"
-    tell_about: "Empfehle '%{product}' weiter"
-    sender_name: "Dein Name"
-    sender_email: "Deine Emailadresse"
-    recipient_name: "Name vom Empfänger"
-    recipient_email: "Email vom Empfänger"
-    recipient_emails: "Empfänger Emails (mit Beistrich getrennt)"
-    message: "Nachricht"
-    send_message: "Diesen Artikel per E-Mail empfehlen!"
-    mail_sent_to: "Email wurde an %{email} verschickt "
-    send_to_other: "Jemanden anders empfehlen"
-    you_would_like_this: "Ich glaube das könnte dir gefallen"
+    spree:
+      email_to_friend:
+        send_to_friend: "Per Email Empfehlen"
+        tell_about: "Empfehle '%{product}' weiter"
+        sender_name: "Dein Name"
+        sender_email: "Deine Emailadresse"
+        recipient_name: "Name vom Empfänger"
+        recipient_email: "Email vom Empfänger"
+        recipient_emails: "Empfänger Emails (mit Beistrich getrennt)"
+        message: "Nachricht"
+        send_message: "Diesen Artikel per E-Mail empfehlen!"
+        mail_sent_to: "Email wurde an %{email} verschickt "
+        send_to_other: "Jemanden anders empfehlen"
+        you_would_like_this: "Ich glaube das könnte dir gefallen"
 
-  captcha:
-    captcha_settings: "Captcha Einstellungen"
-    public_key: "Öffentlichter Schlüssel (Public key)"
-    private_key: "Privater Schlüssel (Private key)"
-    manage_keys: "Ihre (re)captcha Schlüssel verwalten"
-    theme: "Theme"
+      captcha:
+        captcha_settings: "Captcha Einstellungen"
+        public_key: "Öffentlichter Schlüssel (Public key)"
+        private_key: "Privater Schlüssel (Private key)"
+        manage_keys: "Ihre (re)captcha Schlüssel verwalten"
+        theme: "Theme"
