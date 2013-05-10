@@ -1,22 +1,23 @@
 ---
 fr-FR:
-  email_to_friend:
-    send_to_friend: "Envoyer à un ami"
-    tell_about: "Partager: %{product}"
-    sender_name: "Votre nom"
-    sender_email: "Votre adresse email"
-    recipient_name: "Le nom de votre ami"
-    recipient_email: "L'adresse email de votre ami"
-    recipient_emails: "Adresse emails (séparé par une virgule)"
-    message: "Message"
-    send_message: "Envoyer votre message !"
-    mail_sent_to: "Votre message a bien été envoyé à %{email} "
-    send_to_other: "Envoyé à un autre ami"
-    you_would_like_this: "Je pense que tu aimerais ce produit"
+    spree:
+      email_to_friend:
+        send_to_friend: "Envoyer à un ami"
+        tell_about: "Partager: %{product}"
+        sender_name: "Votre nom"
+        sender_email: "Votre adresse email"
+        recipient_name: "Le nom de votre ami"
+        recipient_email: "L'adresse email de votre ami"
+        recipient_emails: "Adresse emails (séparé par une virgule)"
+        message: "Message"
+        send_message: "Envoyer votre message !"
+        mail_sent_to: "Votre message a bien été envoyé à %{email} "
+        send_to_other: "Envoyé à un autre ami"
+        you_would_like_this: "Je pense que tu aimerais ce produit"
 
-  captcha:
-    captcha_settings: "Captcha Settings"
-    public_key: "Clé publique"
-    private_key: "Clé privée"
-    manage_keys: "Gestion de vos clé (re)captcha"
-    theme: "Theme"
+      captcha:
+        captcha_settings: "Captcha Settings"
+        public_key: "Clé publique"
+        private_key: "Clé privée"
+        manage_keys: "Gestion de vos clé (re)captcha"
+        theme: "Theme"
