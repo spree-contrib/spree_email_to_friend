@@ -1,23 +1,24 @@
 ---
 pt-BR:
-  email_to_friend:
-    send_to_friend: "Recomendar a um amigo"
-    tell_about: "Enviar %{product} a um amigo"
-    sender_name: "Seu nome"
-    sender_email: "Seu endereço de e-mail"
-    recipient_name: "Nome do seu amigo"
-    recipient_email: "E-mail do seu amigo"
-    message: "Mensagem"
-    send_message: "Enviar a um amigo!"
-    mail_sent_to: "E-mail enviado para %{email} "
-    send_to_other: "Enviar para outro amigo"
-    you_would_like_this: "Eu acho que você gostará deste produto"
+    spree:
+      email_to_friend:
+        send_to_friend: "Recomendar a um amigo"
+        tell_about: "Enviar %{product} a um amigo"
+        sender_name: "Seu nome"
+        sender_email: "Seu endereço de e-mail"
+        recipient_name: "Nome do seu amigo"
+        recipient_email: "E-mail do seu amigo"
+        message: "Mensagem"
+        send_message: "Enviar a um amigo!"
+        mail_sent_to: "E-mail enviado para %{email} "
+        send_to_other: "Enviar para outro amigo"
+        you_would_like_this: "Eu acho que você gostará deste produto"
 
-  captcha:
-    captcha_settings: "Configurações do Captcha "
-    public_key: "Chave pública"
-    private_key: "Chave privada"
-    manage_keys: "Gerencie suas chaves do recaptcha"
-    theme: "Tema"
+      captcha:
+        captcha_settings: "Configurações do Captcha "
+        public_key: "Chave pública"
+        private_key: "Chave privada"
+        manage_keys: "Gerencie suas chaves do recaptcha"
+        theme: "Tema"
 
 
