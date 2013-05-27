@@ -34,7 +34,7 @@
 
       <div data-hook="private_key" class="field">
         <label><%= Spree.t('captcha.theme') %>:</label><br>
-        <%= select_tag('preferences[theme]', options_for_selecSpree.t(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: "select2") %>
+        <%= select_tag('preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: "select2") %>
       </div>
 
     </div>
