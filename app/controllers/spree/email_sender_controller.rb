@@ -1,7 +1,5 @@
-class Spree::EmailSenderController < Spree::BaseController
+class Spree::EmailSenderController < Spree::StoreController
 
-  helper Spree::StoreHelper
-  helper Spree::BaseHelper
   include Spree::Core::ControllerHelpers::Order
 
   before_filter :find_object
