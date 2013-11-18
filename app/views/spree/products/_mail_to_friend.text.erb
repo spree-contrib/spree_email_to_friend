@@ -2,7 +2,7 @@
 
 I think you would like this item:
 
-  * <%= product.name %>
+  * <%= object.name %>
 
 <% unless mail.message.blank? -%>
 <%= mail.message %>
@@ -10,7 +10,7 @@ I think you would like this item:
 
 <%= mail.sender_name %>
 
-Click the link below to view the <%= product.name %> page.
-<%= spree.product_url(product) %>
+Click the link below to view the <%= object.name %> page.
+<%= spree.product_url(object) %>
 
 For more online shopping, visit <%= spree.products_url %>
