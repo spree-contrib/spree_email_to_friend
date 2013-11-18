@@ -45,13 +45,17 @@ class Spree::EmailSenderController < Spree::StoreController
     def find_object
       class_name = "Spree::#{(params[:type].titleize)}".constantize
       return false if params[:id].blank?
-      @object = class_name.find_by_id(params[:id])
+
       if class_name.respond_to?('find_by_permalink')
         @object ||= class_name.find_by_permalink(params[:id])
       end
       if class_name.respond_to?('get_by_param')
         @object ||= class_name.get_by_param(params[:id])
       end
+
+      # Final attempt to load by id.
+      @object ||= class_name.find_by_id(params[:id])
+
       # Display 404 page if object is not found.
       raise ActiveRecord::RecordNotFound if @object.nil?
     end
