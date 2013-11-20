@@ -1,24 +1,23 @@
----
 en:
-    spree:
-      email_to_friend:
-        send_to_friend: "Email a friend"
-        tell_about: "Tell a friend about: %{product}"
-        sender_name: "Your name"
-        sender_email: "Your email address"
-        recipient_name: "Your friend's name"
-        recipient_email: "Your friend's email address"
-        recipient_emails: "Email addresses (comma separated)"
-        message: "Message"
-        send_message: "Tell your friend!"
-        mail_sent_to: "Mail sent to %{email} "
-        send_to_other: "Send to other friend"
-        you_would_like_this: "%{sender_name} wants you to see this item at %{site}"
+  spree:
+    email_to_friend:
+      send_to_friend: "Email a friend"
+      tell_about: "Tell a friend about: %{product}"
+      sender_name: "Your name"
+      sender_email: "Your email address"
+      recipient_name: "Your friend's name"
+      recipient_email: "Your friend's email address"
+      recipient_emails: "Email addresses (comma separated)"
+      message: "Message"
+      send_message: "Tell your friend!"
+      mail_sent_to: "Mail sent to %{email} "
+      send_to_other: "Send to other friend"
+      you_would_like_this: "%{sender_name} wants you to see this item at %{site}"
 
-      captcha:
-        captcha_settings: "Captcha Settings"
-        public_key: "Public key"
-        private_key: "Private key"
-        manage_keys: "Manage your (re)captcha keys"
-        use_captcha: "Use Captcha?"
-        theme: "Theme"
+    captcha:
+      captcha_settings: "Captcha Settings"
+      public_key: "Public key"
+      private_key: "Private key"
+      manage_keys: "Manage your (re)captcha keys"
+      use_captcha: "Use Captcha?"
+      theme: "Theme"
