@@ -37,7 +37,7 @@ class Spree::EmailSenderController < Spree::StoreController
       end
     end
 
-    #extract send message to make easier to override
+    # Extract send message to make easier to override
     def send_message(object, mail_to_friend)
       Spree::ToFriendMailer.mail_to_friend(object,@mail_to_friend).deliver
     end
@@ -46,8 +46,8 @@ class Spree::EmailSenderController < Spree::StoreController
       class_name = "Spree::#{(params[:type].titleize)}".constantize
       return false if params[:id].blank?
 
-      if class_name.respond_to?('find_by_permalink')
-        @object ||= class_name.find_by_permalink(params[:id])
+      if class_name.respond_to?('find_by_slug')
+        @object ||= class_name.find_by_slug(params[:id])
       end
       if class_name.respond_to?('get_by_param')
         @object ||= class_name.get_by_param(params[:id])

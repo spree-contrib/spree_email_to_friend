@@ -1,3 +1,4 @@
+---
 en:
   spree:
     email_to_friend:
@@ -12,8 +13,10 @@ en:
       send_message: "Tell your friend!"
       mail_sent_to: "Mail sent to %{email} "
       send_to_other: "Send to other friend"
-      you_would_like_this: "%{sender_name} wants you to see this item at %{site}"
-
+      sender_subject: "%{sender_name} wants you to see this item at %{site}"
+      you_would_like_this_item: "I think you would like this item:"
+      click_link_to_view: "Click the link below to view the %{name} page."
+      visit_page: "For more online shopping, visit %{url}"
     captcha:
       captcha_settings: "Captcha Settings"
       public_key: "Public key"
@@ -21,3 +24,6 @@ en:
       manage_keys: "Manage your (re)captcha keys"
       use_captcha: "Use Captcha?"
       theme: "Theme"
+    validation:
+      recipients: "must contain at least one valid email address"
+      invalid_recipients: "must be removed"

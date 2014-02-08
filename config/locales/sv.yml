@@ -1,0 +1,29 @@
+---
+sv:
+  spree:
+    email_to_friend:
+      send_to_friend: "Email en vän"
+      tell_about: "Tipsa en vän om: %{product}"
+      sender_name: "Ditt namn"
+      sender_email: "Din epost adress"
+      recipient_name: "Din väns namn"
+      recipient_email: "Din väns email adress"
+      recipient_emails: "Email adresser (komma separerade)"
+      message: "Meddelande"
+      send_message: "Berätta för din vän!"
+      mail_sent_to: "Mail skickat till %{email} "
+      send_to_other: "Skicka till annan vän"
+      sender_subject: "%{sender_name} vill att du ska se detta objekt på %{site}"
+      you_would_like_this_item: "Jag tror att du skulle gilla detta:"
+      click_link_to_view: "Klicka på länken nedan för att se %{name} sidan."
+      visit_page: "För mer online shopping, besök %{url}"
+    captcha:
+      captcha_settings: "Captcha Inställningar"
+      public_key: "Public nyckel"
+      private_key: "Privat nyckel"
+      manage_keys: "Hantera dina (re)captcha nycklar"
+      use_captcha: "Använd Captcha?"
+      theme: "Tema"
+    validation:
+      recipients: "måste innehålla minst en giltig e-postadress"
+      invalid_recipients: "måste tas bort"

@@ -1,0 +1,29 @@
+---
+fr:
+  spree:
+    email_to_friend:
+      send_to_friend: "Envoyer à un ami"
+      tell_about: "Partager: %{product}"
+      sender_name: "Votre nom"
+      sender_email: "Votre adresse email"
+      recipient_name: "Le nom de votre ami"
+      recipient_email: "L'adresse email de votre ami"
+      recipient_emails: "Adresse emails (séparé par une virgule)"
+      message: "Message"
+      send_message: "Envoyer votre message !"
+      mail_sent_to: "Votre message a bien été envoyé à %{email} "
+      send_to_other: "Envoyé à un autre ami"
+      sender_subject: "Je pense que tu aimerais ce produit"
+      you_would_like_this_item: "Je pense que tu aimerais ce produit:"
+      click_link_to_view: "Cliquez sur le lien ci-dessous pour afficher la page %{name}."
+      visit_page: "Pour le shopping plus en ligne, visitez le site %{url}"
+    captcha:
+      captcha_settings: "Captcha Settings"
+      public_key: "Clé publique"
+      private_key: "Clé privée"
+      manage_keys: "Gestion de vos clé (re)captcha"
+      use_captcha: "Utilisez Captcha?"
+      theme: "Theme"
+    validation:
+      recipients: "doit contenir au moins une adresse email valide"
+      invalid_recipients: "doivent être enlevés"
