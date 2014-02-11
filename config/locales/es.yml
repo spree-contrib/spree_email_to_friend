@@ -1,21 +1,29 @@
 ---
 es:
-    spree:
-      email_to_friend:
-        send_to_friend: "Enviar a un amigo"
-        tell_about: "Enviar {{product}} a un amigo"
-        sender_name: "Tu nombre"
-        sender_email: "Tu dirección de correo"
-        recipient_name: "Nombre de tu amigo"
-        recipient_email: "Dirección de correo de tu amigo"
-        message: "Mensaje"
-        send_message: "¡Enviar a un amigo!"
-        mail_sent_to: "Mensaje enviado a {{email}} "
-        send_to_other: "Enviar a otro amigo"
-        you_would_like_this: "Creo que este artículo te gustará"
-      captcha:
-        captcha_settings: "Configuracion de Captcha"
-        public_key: "Llave pública"
-        private_key: "Llave privada"
-        manage_keys: "Administrar tus llaves de recaptcha."
-        theme: "Tema"
+  spree:
+    email_to_friend:
+      send_to_friend: "Enviar a un amigo"
+      tell_about: "Enviar %{product} a un amigo"
+      sender_name: "Tu nombre"
+      sender_email: "Tu dirección de correo"
+      recipient_name: "Nombre de tu amigo"
+      recipient_email: "Dirección de correo de tu amigo"
+      recipient_emails: "Direcciones de correo electrónico (separadas por comas)"
+      message: "Mensaje"
+      send_message: "¡Enviar a un amigo!"
+      mail_sent_to: "Mensaje enviado a %{email} "
+      send_to_other: "Enviar a otro amigo"
+      sender_subject: "Creo que este artículo te gustará"
+      you_would_like_this_item: "Creo que este artículo te gustará:"
+      click_link_to_view: "Haga clic en el enlace de abajo para ver la página %{name}."
+      visit_page: "Para ir de compras más en línea, visite %{url}"
+    captcha:
+      captcha_settings: "Configuracion de Captcha"
+      public_key: "Llave pública"
+      private_key: "Llave privada"
+      manage_keys: "Administrar tus llaves de recaptcha."
+      use_captcha: "Usar Captcha?"
+      theme: "Tema"
+    validation:
+      recipients: "debe contener al menos una dirección de e-mail válida"
+      invalid_recipients: "debe ser eliminado"

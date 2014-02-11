@@ -5,17 +5,16 @@ class Spree::MailToFriend
 
   EMAILREGEX = /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}\z/i
 
-  validates :subject, :presence => true
-  validates :sender_name, :presence => true
+  validates :subject, :sender_name, :presence => true
   validates :recipient_name, :presence => true, :unless => :is_multi
   validates :sender_email, :format => { :with => EMAILREGEX }
-  validates :recipients, :length => {:minimum => 1, :message => "must contain at least one valid email address"}
-  validates :invalid_recipients, :length => {:maximum => 0, :message => "must be removed"}
+  validates :recipients, :length => {:minimum => 1, :message => Spree.t(:recipients, scope: :validation) }
+  validates :invalid_recipients, :length => {:maximum => 0, :message => Spree.t(:invalid_recipients, scope: :validation) }
 
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
     @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
-    @subject      = opts[:subject]      || Spree.t('email_to_friend.you_would_like_this', :sender_name => @sender_name, :site => Spree::Config[:site_url])
+    @subject      = opts[:subject]      || Spree.t(:sender_subject, scope: :email_to_friend, sender_name: @sender_name, site: Spree::Config[:site_url])
 
     @recipients = []
     @invalid_recipients = []
@@ -41,6 +40,6 @@ class Spree::MailToFriend
   end
 
   def is_multi
-    (@recipients.size + @invalid_recipients.size) > 1
+    [@recipients, @invalid_recipients].compact.sum.size > 1
   end
 end

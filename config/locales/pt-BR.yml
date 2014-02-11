@@ -1,24 +1,29 @@
 ---
 pt-BR:
-    spree:
-      email_to_friend:
-        send_to_friend: "Recomendar a um amigo"
-        tell_about: "Enviar %{product} a um amigo"
-        sender_name: "Seu nome"
-        sender_email: "Seu endereço de e-mail"
-        recipient_name: "Nome do seu amigo"
-        recipient_email: "E-mail do seu amigo"
-        message: "Mensagem"
-        send_message: "Enviar a um amigo!"
-        mail_sent_to: "E-mail enviado para %{email} "
-        send_to_other: "Enviar para outro amigo"
-        you_would_like_this: "Eu acho que você gostará deste produto"
-
-      captcha:
-        captcha_settings: "Configurações do Captcha "
-        public_key: "Chave pública"
-        private_key: "Chave privada"
-        manage_keys: "Gerencie suas chaves do recaptcha"
-        theme: "Tema"
-
-
+  spree:
+    email_to_friend:
+      send_to_friend: "Recomendar a um amigo"
+      tell_about: "Enviar %{product} a um amigo"
+      sender_name: "Seu nome"
+      sender_email: "Seu endereço de e-mail"
+      recipient_name: "Nome do seu amigo"
+      recipient_email: "E-mail do seu amigo"
+      recipient_emails: "Endereços de e-mail (separados por vírgula)"
+      message: "Mensagem"
+      send_message: "Enviar a um amigo!"
+      mail_sent_to: "E-mail enviado para %{email} "
+      send_to_other: "Enviar para outro amigo"
+      sender_subject: "Eu acho que você gostará deste produto"
+      you_would_like_this_item: "Eu acho que você gostará deste produto:"
+      click_link_to_view: "Clique na ligação abaixo para visualizar a página %{name}."
+      visit_page: "Para compras on-line mais, visite %{url}"
+    captcha:
+      captcha_settings: "Configurações do Captcha "
+      public_key: "Chave pública"
+      private_key: "Chave privada"
+      manage_keys: "Gerencie suas chaves do recaptcha"
+      use_captcha: "Utilize Captcha?"
+      theme: "Tema"
+    validation:
+      recipients: "deve conter no menos um endereço de e-mail válido"
+      invalid_recipients: "deve ser removido"

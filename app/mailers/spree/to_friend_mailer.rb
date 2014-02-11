@@ -7,11 +7,11 @@ class Spree::ToFriendMailer < ActionMailer::Base
     @mail = mail
     opts = {}
 
-    if mail.hide_recipients && Spree::Config[:hidden_recipients_to_address]
-      opts[:to] = Spree::Config[:hidden_recipients_to_address]
-      opts[:bcc] = mail.recipient_email
+    if mail.hide_recipients
+      opts[:to]  = mail.recipient_email
+      opts[:bcc] = mail.recipients
     else
-      opts[:to] = mail.recipient_email
+      opts[:to] = [mail.recipient_email, mail.recipients.to_s.split(',')].flatten
     end
     default_url_options[:host] = mail.host
     opts[:subject] =  mail.subject
