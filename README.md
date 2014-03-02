@@ -2,6 +2,7 @@ Spree Email to Friend
 =====================
 
 [![Build Status](https://api.travis-ci.org/spree/spree_email_to_friend.png?branch=master)](https://api.travis-ci.org/spree/spree_email_to_friend.png)
+[![Code Climate](https://codeclimate.com/github/spree/spree_email_to_friend.png)](https://codeclimate.com/github/spree/spree_email_to_friend)
 
 The Spree Email to Friend extension enables you to send the product reference to your friend via email.
 

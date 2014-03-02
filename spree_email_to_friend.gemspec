@@ -16,12 +16,12 @@ Gem::Specification.new do |s|
   s.require_path  = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.2.0.beta'
+  s.add_dependency 'spree_core', '~> 2.2.0'
   s.add_dependency 'recaptcha', '>= 0.3.1'
 
   s.add_development_dependency 'rspec-rails', '~> 2.14'
   s.add_development_dependency 'sqlite3', '~> 1.3.8'
-  s.add_development_dependency 'factory_girl', '~> 4.2'
+  s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'capybara', '~> 2.2.1'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'poltergeist', '~> 1.5.0'
