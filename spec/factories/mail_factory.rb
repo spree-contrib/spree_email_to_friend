@@ -9,8 +9,8 @@ FactoryGirl.define do
     subject            'Check this out!'
     message            'Its totally awesome..'
 
-    recipients         { Array(1..4).sample.times.map{ Faker::Internet.email }.join(',') }
+    recipients         { Array(1..4).sample.times.map{ Faker::Internet.email } }
     hide_recipients    { [true,false].sample }
-    invalid_recipients nil
+    invalid_recipients []
   end
 end

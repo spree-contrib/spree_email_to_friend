@@ -8,10 +8,10 @@ class Spree::ToFriendMailer < ActionMailer::Base
     opts = {}
 
     if mail.hide_recipients
-      opts[:to]  = mail.recipient_email
-      opts[:bcc] = mail.recipients
+      opts[:to]  = mail.recipients.first
+      opts[:bcc] = mail.recipients[1..-1] if mail.recipients.size > 1
     else
-      opts[:to] = [mail.recipient_email, mail.recipients.to_s.split(',')].flatten
+      opts[:to] = mail.recipients
     end
     default_url_options[:host] = mail.host
     opts[:subject] =  mail.subject
