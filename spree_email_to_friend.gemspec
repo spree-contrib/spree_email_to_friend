@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.authors      = ['Jorge Calás Lozano', 'Roman Smirnov', 'Trung Lê']
   s.homepage     = 'https://github.com/spree/spree_email_to_friend'
-  s.license      = %q{BSD-3}
+  s.license      = 'BSD-3'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- spec/*`.split("\n")
