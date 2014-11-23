@@ -13,6 +13,7 @@ require 'shoulda-matchers'
 require 'email_spec'
 require 'ffaker'
 require 'database_cleaner'
+require 'pry'
 
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
@@ -33,6 +34,7 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
   config.use_transactional_fixtures = false
+  config.infer_spec_type_from_file_location!
 
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
