@@ -1,13 +1,14 @@
-Spree Email to Friend
-=====================
+# Spree Email to Friend
 
-[![Build Status](https://api.travis-ci.org/spree/spree_email_to_friend.png?branch=master)](https://api.travis-ci.org/spree/spree_email_to_friend.png)
-[![Code Climate](https://codeclimate.com/github/spree/spree_email_to_friend.png)](https://codeclimate.com/github/spree/spree_email_to_friend)
+[![Build Status](https://travis-ci.org/spree-contrib/spree_email_to_friend.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_email_to_friend)
+[![CodeClimate](https://codeclimate.com/github/spree-contrib/spree_email_to_friend/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_email_to_friend)
+[![Gem Version](https://badge.fury.io/rb/spree_email_to_friend.svg)](http://badge.fury.io/rb/spree_email_to_friend)
 
 The Spree Email to Friend extension enables you to send the product reference to your friend via email.
 
-Installation
-------------
+---
+
+## Installation
 
 Add to your `Gemfile`
 ```ruby
@@ -21,38 +22,17 @@ bundle install
 
 Thats all!
 
-Contributing
-------------
+---
 
-In the spirit of [free software][1], **everyone** is encouraged to help improve this project.
+## Contributing
 
-Here are some ways *you* can contribute:
+See corresponding [contributing guidelines][1].
 
-* by using prerelease versions
-* by reporting [bugs][2]
-* by suggesting new features
-* by writing translations
-* by writing or editing documentation
-* by writing specifications
-* by writing code (*no patch is too small*: fix typos, add comments, clean up inconsistent whitespace)
-* by refactoring code
-* by resolving [issues][2]
-* by reviewing patches
+---
 
-Starting point:
+Copyright (c) 2009-2014 [Jorge Calás Lozano][5], [Roman Smirnov][6], [Trung Lê][7] and other [contributors][8], released under the [New BSD License][3]
 
-* Fork the repo
-* Clone your repo
-* Run `bundle install`
-* Run `bundle exec rake test_app` to create the test application in `spec/test_app`
-* Make your changes
-* Ensure specs pass by running `bundle exec rspec spec`
-* Submit your pull request
-
-Copyright (c) 2014 [Jorge Calás Lozano][5], [Roman Smirnov][6], [Trung Lê][7] and other [contributors][8], released under the [New BSD License][3]
-
-[1]: http://www.fsf.org/licensing/essays/free-sw.html
-[2]: https://github.com/spree/spree_email_to_friend/issues
+[1]: https://github.com/spree/spree_email_to_friend/blob/master/CONTRIBUTING.md
 [3]: https://github.com/spree/spree_email_to_friend/blob/master/LICENSE.md
 [5]: https://github.com/calas
 [6]: https://github.com/romul
