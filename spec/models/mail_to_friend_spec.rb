@@ -13,9 +13,7 @@ describe Spree::MailToFriend do
 
   context 'invalid recipents should be removed' do
     let(:mail) do
-      build(:mail,
-        invalid_recipients: 'invaild',
-        recipient_email:    'ryan@spreecommerce.com, xyx')
+      build(:mail, invalid_recipients: ['invaild'])
     end
 
     it 'check email format with REGEX' do

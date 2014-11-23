@@ -19,10 +19,10 @@ class Spree::MailToFriend
     @recipients = []
     @invalid_recipients = []
 
-    @recipient_email = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/ , '')
-    @recipient_email.split(',').each do |address|
+    addresses = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/ , '')
+    addresses.split(',').each do |address|
       if address =~ EMAILREGEX
-         @recipients << address
+        @recipients << address
       else
         @invalid_recipients << address
       end
