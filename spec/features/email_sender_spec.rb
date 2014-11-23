@@ -22,7 +22,7 @@ feature 'Email to friend', js: true do
     scenario 'even a robot can send email to friend' do
       fill_in_form_with mail
       click_button 'Tell your friend!'
-      expect(page).to have_text "Mail sent to #{mail.recipient_email}"
+      expect(page).to have_text "Mail sent to #{mail.recipients.first}"
     end
   end
 
@@ -35,7 +35,7 @@ feature 'Email to friend', js: true do
       fill_in_form_with mail
       click_button 'Tell your friend!'
       pending 'It bypass captcha..'
-      expect(page).not_to have_text "Mail sent to #{mail.recipient_email}"
+      expect(page).not_to have_text "Mail sent to #{mail.recipients.first}"
     end
   end
 
@@ -45,7 +45,7 @@ feature 'Email to friend', js: true do
     fill_in 'mail_to_friend_sender_name', with: mail.sender_name
     fill_in 'mail_to_friend_sender_email', with: mail.sender_email
     fill_in 'mail_to_friend_recipient_name', with: mail.recipient_name
-    fill_in 'mail_to_friend_recipient_email', with: mail.recipient_email
+    fill_in 'mail_to_friend_recipient_email', with: mail.recipients.first
     fill_in 'mail_to_friend_message', with: mail.message
   end
 end
