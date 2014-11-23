@@ -1,4 +1,2 @@
---colour
---format
-progress
-mtime
+--color
+-f documentation
