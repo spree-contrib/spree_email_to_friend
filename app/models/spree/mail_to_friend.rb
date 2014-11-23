@@ -14,7 +14,7 @@ class Spree::MailToFriend
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
     @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
-    @subject      = opts[:subject]      || Spree.t(:sender_subject, scope: :email_to_friend, sender_name: @sender_name, site: Spree::Config[:site_url])
+    @subject      = opts[:subject]      || Spree.t(:sender_subject, scope: :email_to_friend, sender_name: @sender_name, site: site_url)
 
     @recipients = []
     @invalid_recipients = []
@@ -40,5 +40,15 @@ class Spree::MailToFriend
 
   def is_multi
     [@recipients, @invalid_recipients].compact.sum.size > 1
+  end
+
+  private
+
+  def site_url
+    if Gem::Version.new(Spree.version) >= Gem::Version.new('2.3.0')
+      Spree::Store.current.try(:url)
+    else
+      Spree::Config[:site_url]
+    end
   end
 end
