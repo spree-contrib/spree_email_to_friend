@@ -1,7 +1,7 @@
 class Spree::MailToFriend
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  attr_accessor :host, :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients, :hide_recipients
+  attr_accessor :host, :subject, :sender_name, :sender_email, :recipient_name, :recipient_email, :message, :recipients, :invalid_recipients
 
   EMAILREGEX = /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}\z/i
 
@@ -31,7 +31,6 @@ class Spree::MailToFriend
     @recipient_name = opts[:recipient_name]
     @recipient_name ||= @recipients[0].split('@', 2)[0].titleize unless @recipients.empty?
 
-    @hide_recipients = opts[:hide_recipients] || false
     @message = opts[:message]
   end
 
