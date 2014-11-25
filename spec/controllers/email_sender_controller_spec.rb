@@ -1,9 +1,9 @@
-require 'spec_helper'
-
-describe Spree::EmailSenderController do
+RSpec.describe Spree::EmailSenderController, type: :controller do
   let(:product) { create(:product) }
 
-  before { controller.stub spree_current_user: nil }
+  before do
+    allow(controller).to receive(:spree_current_user) { nil }
+  end
 
   it 'use EmailSenderController' do
     expect(controller).to be_an_instance_of(Spree::EmailSenderController)

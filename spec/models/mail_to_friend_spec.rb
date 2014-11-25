@@ -1,9 +1,7 @@
-require 'spec_helper'
-
-describe Spree::MailToFriend do
-  it { should validate_presence_of :subject }
-  it { should validate_presence_of :sender_name }
-  it { should validate_presence_of :recipient_name }
+RSpec.describe Spree::MailToFriend, type: :model do
+  it { is_expected.to validate_presence_of :subject }
+  it { is_expected.to validate_presence_of :sender_name }
+  it { is_expected.to validate_presence_of :recipient_name }
 
   context 'Validate required fields' do
     it 'verify test data hase been generated' do
@@ -22,7 +20,7 @@ describe Spree::MailToFriend do
 
     it 'persist function should return false' do
       mail_to_friend = Spree::MailToFriend.new
-      expect(mail_to_friend.persisted?).to be_false
+      expect(mail_to_friend.persisted?).to be false
     end
   end
 end
