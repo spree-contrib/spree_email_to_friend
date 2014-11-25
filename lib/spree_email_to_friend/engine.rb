@@ -9,16 +9,16 @@ module SpreeEmailToFriend
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    initializer "spree.email_to_friend.preferences", :after => "spree.environment" do |app|
+    initializer 'spree.email_to_friend.preferences', after: 'spree.environment' do |app|
       Spree::Captcha::Config = Spree::CaptchaConfiguration.new
     end
 
     def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), "../../app/**/*_decorator*.rb")) do |c|
+      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
 
-      Dir.glob(File.join(File.dirname(__FILE__), "../../app/overrides/*.rb")) do |c|
+      Dir.glob(File.join(File.dirname(__FILE__), '../../app/overrides/*.rb')) do |c|
        Rails.configuration.cache_classes ? require(c) : load(c)
       end
     end
