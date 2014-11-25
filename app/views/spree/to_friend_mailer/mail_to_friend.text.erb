@@ -1,3 +1,2 @@
 <% object_sym = @object.class.name.tableize %>
-<%= render :partial => "#{object_sym}/mail_to_friend",
-           :locals => {:object => @object, :mail => @mail} %>
+<%= render partial: "#{object_sym}/mail_to_friend", locals: { object: @object, mail: @mail } %>

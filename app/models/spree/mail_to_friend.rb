@@ -5,11 +5,11 @@ class Spree::MailToFriend
 
   EMAILREGEX = /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,8}\z/i
 
-  validates :subject, :sender_name, :presence => true
-  validates :recipient_name, :presence => true, :unless => :is_multi
-  validates :sender_email, :format => { :with => EMAILREGEX }
-  validates :recipients, :length => {:minimum => 1, :message => Spree.t(:recipients, scope: :validation) }
-  validates :invalid_recipients, :length => {:maximum => 0, :message => Spree.t(:invalid_recipients, scope: :validation) }
+  validates :subject, :sender_name, presence: true
+  validates :recipient_name, presence: true, unless: :is_multi
+  validates :sender_email, format: { with: EMAILREGEX }
+  validates :recipients, length: {minimum: 1, message: Spree.t(:recipients, scope: :validation) }
+  validates :invalid_recipients, length: {maximum: 0, message: Spree.t(:invalid_recipients, scope: :validation) }
 
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
