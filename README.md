@@ -12,7 +12,7 @@ The Spree Email to Friend extension enables you to send the product reference to
 
 Add to your `Gemfile`
 ```ruby
-gem 'spree_email_to_friend', github: 'spree/spree_email_to_friend', branch: '2-3-stable'
+gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', branch: '2-3-stable'
 ```
 
 Run
