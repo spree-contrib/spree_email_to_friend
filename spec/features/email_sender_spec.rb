@@ -1,11 +1,12 @@
-require 'spec_helper'
+RSpec.feature 'Email to friend', :js, type: :feature do
 
-feature 'Email to friend', js: true do
-  given!(:product) { create(:product) }
-  given(:mail)     { build(:mail) }
+  given(:product) { create(:product) }
+  given(:mail)    { build(:mail) }
 
   background do
     visit spree.product_path(product)
+    expect(page).to have_text product.name
+    expect(page).to have_link 'Email a friend'
     click_link 'Email a friend'
   end
 

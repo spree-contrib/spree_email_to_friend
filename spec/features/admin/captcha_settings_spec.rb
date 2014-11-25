@@ -1,10 +1,8 @@
-require 'spec_helper'
-
-feature 'Admin Captcha Settings', js: true do
+RSpec.feature 'Admin Captcha Settings', :js, type: :feature do
   stub_authorization!
 
   context 'when update' do
-    background 'should visit admin pannel' do
+    background 'visits admin pannel' do
       visit spree.admin_path
       click_link 'Configuration'
     end
@@ -17,7 +15,7 @@ feature 'Admin Captcha Settings', js: true do
       expect(find_field('Yes').value).not_to be_blank
     end
 
-    scenario 'dont display Captcha Settings on frontend' do
+    scenario 'does not display Captcha Settings on frontend' do
       click_link 'Captcha Settings'
       choose 'No'
       click_button 'Update'

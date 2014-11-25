@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Spree::ToFriendMailer do
+RSpec.describe Spree::ToFriendMailer, type: :mailer do
   let!(:product) { create(:product) }
 
   context 'mail content' do
