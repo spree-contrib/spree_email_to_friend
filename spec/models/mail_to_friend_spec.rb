@@ -22,7 +22,7 @@ describe Spree::MailToFriend do
 
     it 'persist function should return false' do
       mail_to_friend = Spree::MailToFriend.new
-      expect(mail_to_friend.persisted?).to be_false
+      expect(mail_to_friend.persisted?).to be false
     end
   end
 end

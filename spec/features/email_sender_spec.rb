@@ -34,7 +34,7 @@ feature 'Email to friend', js: true do
     scenario 'only human can send email to friend' do
       fill_in_form_with mail
       click_button 'Tell your friend!'
-      pending 'It bypass captcha..'
+      skip 'It bypass captcha..'
       expect(page).not_to have_text "Mail sent to #{mail.recipients.first}"
     end
   end

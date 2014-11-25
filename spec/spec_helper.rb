@@ -36,13 +36,19 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 
-  config.before :suite do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :deletion
   end
 
   config.before do
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :deletion
+  end
+
+  config.before do
     DatabaseCleaner.start
   end
 
