@@ -1,8 +1,13 @@
 ﻿# encoding: utf-8
+lib = File.expand_path('../lib/', __FILE__)
+$LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
+
+require 'spree_email_to_friend/version'
+
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_email_to_friend'
-  s.version     = '1.3'
+  s.version     = SpreeEmailToFriend.version
   s.summary     = 'Spree extension to send product recommendations to friends'
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
@@ -15,6 +20,8 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_path  = 'lib'
   s.requirements << 'none'
+
+  s.has_rdoc = false
 
   s.add_dependency 'spree_core', '~> 3.0.0.beta'
   s.add_dependency 'recaptcha', '>= 0.3.1'
