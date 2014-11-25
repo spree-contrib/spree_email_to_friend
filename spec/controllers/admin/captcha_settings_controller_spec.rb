@@ -1,11 +1,9 @@
-require 'spec_helper'
-
-describe Spree::Admin::CaptchaSettingsController do
+RSpec.describe Spree::Admin::CaptchaSettingsController, type: :controller do
   stub_authorization!
 
   before do
     user = create(:admin_user)
-    controller.stub(try_spree_current_user: user)
+    allow(controller).to receive(:try_spree_current_user) { user }
   end
 
   context '#update' do
@@ -37,7 +35,7 @@ describe Spree::Admin::CaptchaSettingsController do
 
       it 'sets preferred_use_captcha to false' do
         spree_put :update, preferences: { use_captcha: false }
-        expect(Spree::Captcha::Config.preferred_use_captcha).to be_false
+        expect(Spree::Captcha::Config.preferred_use_captcha).to be false
       end
     end
   end
