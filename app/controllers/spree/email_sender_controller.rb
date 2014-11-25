@@ -21,7 +21,7 @@ class Spree::EmailSenderController < Spree::StoreController
         format.html do
           captcha_passed = !Spree::Captcha::Config[:use_captcha] || verify_recaptcha(:private_key => Spree::Captcha::Config[:private_key])
           if @mail_to_friend.valid? && captcha_passed
-            flash[:notice] = Spree.t('email_to_friend.mail_sent_to', :email => @mail_to_friend.recipients.join(", ")).html_safe
+            flash[:notice] = Spree.t('email_to_friend.mail_sent_to', :email => @mail_to_friend.recipients.join(", "))
 
             send_message(@object, @mail_to_friend)
 
