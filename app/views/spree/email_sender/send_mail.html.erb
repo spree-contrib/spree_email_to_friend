@@ -1,7 +1,7 @@
-<h1><%= Spree.t('email_to_friend.tell_about', :product => @object.name) %></h1>
+<h1><%= Spree.t('email_to_friend.tell_about', product: @object.name) %></h1>
 
-<%= form_for(@mail_to_friend, :url => email_to_friend_path(params[:type], @object)) do |f| -%>
-  <%= render 'spree/shared/error_messages', :target => @mail_to_friend %>
+<%= form_for(@mail_to_friend, url: email_to_friend_path(params[:type], @object)) do |f| -%>
+  <%= render 'spree/shared/error_messages', target: @mail_to_friend %>
   <p>
     <%= f.label(:sender_name, Spree.t('email_to_friend.sender_name')) %><br/>
     <%= f.text_field(:sender_name) %>
@@ -23,7 +23,7 @@
     <%= f.text_area(:message) %>
   </p>
   <% if Spree::Captcha::Config[:use_captcha] %>
-    <%= recaptcha_tags :public_key => Spree::Captcha::Config[:public_key], :display => {:theme => Spree::Captcha::Config[:theme]} %>
+    <%= recaptcha_tags public_key: Spree::Captcha::Config[:public_key], display: { theme: Spree::Captcha::Config[:theme] } %>
   <% end %>
   <p>
     <%= f.submit Spree.t('email_to_friend.send_message') %>

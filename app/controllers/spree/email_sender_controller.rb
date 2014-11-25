@@ -6,7 +6,7 @@ class Spree::EmailSenderController < Spree::StoreController
 
   def send_mail
     if request.get?
-      @mail_to_friend = Spree::MailToFriend.new(:sender_email => spree_current_user.try(:email))
+      @mail_to_friend = Spree::MailToFriend.new(sender_email: spree_current_user.try(:email))
     else
       mail_to_friend
     end
@@ -19,9 +19,9 @@ class Spree::EmailSenderController < Spree::StoreController
       @mail_to_friend.host = request.env['HTTP_HOST']
       respond_to do |format|
         format.html do
-          captcha_passed = !Spree::Captcha::Config[:use_captcha] || verify_recaptcha(:private_key => Spree::Captcha::Config[:private_key])
+          captcha_passed = !Spree::Captcha::Config[:use_captcha] || verify_recaptcha(private_key: Spree::Captcha::Config[:private_key])
           if @mail_to_friend.valid? && captcha_passed
-            flash[:notice] = Spree.t('email_to_friend.mail_sent_to', :email => @mail_to_friend.recipients.join(", ")).html_safe
+            flash[:notice] = Spree.t('email_to_friend.mail_sent_to', email: @mail_to_friend.recipients.join(', '))
 
             send_message(@object, @mail_to_friend)
 
@@ -30,7 +30,7 @@ class Spree::EmailSenderController < Spree::StoreController
 
             redirect_to @object
           else
-            render :action => :send_mail
+            render action: :send_mail
           end
         end
       end
@@ -58,5 +58,4 @@ class Spree::EmailSenderController < Spree::StoreController
       # Display 404 page if object is not found.
       raise ActiveRecord::RecordNotFound if @object.nil?
     end
-
 end
