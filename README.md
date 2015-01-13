@@ -30,7 +30,7 @@ See corresponding [contributing guidelines][1].
 
 ---
 
-Copyright (c) 2009-2014 [Jorge Calás Lozano][5], [Roman Smirnov][6], [Trung Lê][7] and other [contributors][8], released under the [New BSD License][3]
+Copyright (c) 2009-2015 [Jorge Calás Lozano][5], [Roman Smirnov][6], [Trung Lê][7] and other [contributors][8], released under the [New BSD License][3]
 
 [1]: https://github.com/spree/spree_email_to_friend/blob/master/CONTRIBUTING.md
 [3]: https://github.com/spree/spree_email_to_friend/blob/master/LICENSE.md
