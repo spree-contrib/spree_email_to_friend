@@ -3,7 +3,7 @@ RSpec.describe Spree::ToFriendMailer, type: :mailer do
 
   context 'mail content' do
     let(:mail_object) { build(:mail) }
-    let(:email)       { Spree::ToFriendMailer.mail_to_friend(product, mail_object) }
+    let(:email)       { described_class.mail_to_friend(product, mail_object) }
 
     it 'is reply to the sender email' do
       expect(email).to reply_to(mail_object.sender_email)

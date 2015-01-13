@@ -3,7 +3,7 @@ RSpec.describe Spree::MailToFriend, type: :model do
   it { is_expected.to validate_presence_of :sender_name }
   it { is_expected.to validate_presence_of :recipient_name }
 
-  context 'Validate required fields' do
+  context 'validate required fields' do
     it 'verify test data hase been generated' do
       expect(build(:mail)).to be_valid
     end
@@ -19,7 +19,7 @@ RSpec.describe Spree::MailToFriend, type: :model do
     end
 
     it 'persist function should return false' do
-      mail_to_friend = Spree::MailToFriend.new
+      mail_to_friend = described_class.new
       expect(mail_to_friend.persisted?).to be false
     end
   end

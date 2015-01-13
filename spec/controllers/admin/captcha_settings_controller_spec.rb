@@ -41,7 +41,7 @@ RSpec.describe Spree::Admin::CaptchaSettingsController, type: :controller do
   end
 
   context '#edit' do
-    it 'render the edit template' do
+    it 'renders the edit template' do
       spree_get :edit
       expect(response).to render_template(:edit)
     end
