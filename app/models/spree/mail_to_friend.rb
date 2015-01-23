@@ -45,10 +45,6 @@ class Spree::MailToFriend
   private
 
   def site_url
-    if Gem::Version.new(Spree.version) >= Gem::Version.new('2.3.0')
-      Spree::Store.current.try(:url)
-    else
-      Spree::Config[:site_url]
-    end
+    Spree::Store.current.try(:url)
   end
 end
