@@ -2,7 +2,7 @@ class Spree::EmailSenderController < Spree::StoreController
   helper Spree::StoreHelper
   helper Spree::BaseHelper
 
-  before_filter :find_object
+  before_action :find_object
 
   def send_mail
     if request.get?
