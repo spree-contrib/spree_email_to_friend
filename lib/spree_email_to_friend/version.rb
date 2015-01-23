@@ -1,5 +1,4 @@
 module SpreeEmailToFriend
-
   # Returns the version of the currently loaded SpreeEmailToFriend as a
   # <tt>Gem::Version</tt>.
   def self.version

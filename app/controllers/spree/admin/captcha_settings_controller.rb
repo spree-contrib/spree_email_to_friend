@@ -5,9 +5,7 @@ module Spree
         Spree::Captcha::Config.set(params[:preferences])
 
         respond_to do |format|
-          format.html {
-            redirect_to edit_admin_captcha_settings_path
-          }
+          format.html { redirect_to edit_admin_captcha_settings_path }
         end
       end
     end

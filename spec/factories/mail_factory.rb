@@ -9,7 +9,7 @@ FactoryGirl.define do
     subject            'Check this out!'
     message            'Its totally awesome..'
 
-    recipients         { Array(1..4).sample.times.map{ Faker::Internet.email } }
+    recipients         { Array(1..4).sample.times.map { Faker::Internet.email } }
     invalid_recipients []
   end
 end

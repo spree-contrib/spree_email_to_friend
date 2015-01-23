@@ -17,7 +17,6 @@ RSpec.describe Spree::Admin::CaptchaSettingsController, type: :controller do
             private_key: FAKE,
             public_key: FAKE,
             use_captcha: false' do
-
       it 'sets preferred_theme to clean' do
         spree_put :update, preferences: { theme: 'clean' }
         expect(Spree::Captcha::Config.preferred_theme).to eq 'clean'

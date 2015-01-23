@@ -1,5 +1,4 @@
 RSpec.feature 'Email to friend', :js do
-
   given(:product) { create(:product) }
   given(:mail)    { build(:mail) }
 

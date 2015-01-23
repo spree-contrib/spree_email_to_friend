@@ -8,8 +8,8 @@ class Spree::MailToFriend
   validates :subject, :sender_name, presence: true
   validates :recipient_name, presence: true, unless: :is_multi
   validates :sender_email, format: { with: EMAILREGEX }
-  validates :recipients, length: {minimum: 1, message: Spree.t(:recipients, scope: :validation) }
-  validates :invalid_recipients, length: {maximum: 0, message: Spree.t(:invalid_recipients, scope: :validation) }
+  validates :recipients, length: { minimum: 1, message: Spree.t(:recipients, scope: :validation) }
+  validates :invalid_recipients, length: { maximum: 0, message: Spree.t(:invalid_recipients, scope: :validation) }
 
   def initialize(opts = {})
     @sender_email = opts[:sender_email] || ' '
@@ -19,7 +19,7 @@ class Spree::MailToFriend
     @recipients = []
     @invalid_recipients = []
 
-    addresses = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/ , '')
+    addresses = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/, '')
     addresses.split(',').each do |address|
       if address =~ EMAILREGEX
         @recipients << address
