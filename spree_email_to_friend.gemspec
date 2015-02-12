@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = false
 
-  s.add_dependency 'spree_core', '~> 3.0.0.beta'
+  s.add_dependency 'spree_core', '~> 3.1.0.beta'
   s.add_dependency 'recaptcha', '>= 0.3.1'
 
   s.add_development_dependency 'rspec-rails', '~> 3.1.0'
