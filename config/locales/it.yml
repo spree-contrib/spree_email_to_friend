@@ -1,0 +1,29 @@
+---
+it:
+  spree:
+    email_to_friend:
+      send_to_friend: "Invia a un amico"
+      tell_about: "Consiglia %{product} a un tuo amico"
+      sender_name: "Il tuo nome"
+      sender_email: "La tua email"
+      recipient_name: "Il nome del tuo amico"
+      recipient_email: "L'email del tuo amico"
+      recipient_emails: "Indirizzi email (separati da virgole)"
+      message: "Messaggio!"
+      send_message: "Dillo a un amico!"
+      mail_sent_to: "Email inviata a %{email} "
+      send_to_other: "Invia a un altro amico"
+      sender_subject: "%{sender_name} ti consiglia %{site}"
+      you_would_like_this_item: "Penso possa piacerti questo prodotto:"
+      click_link_to_view: "Clicca il link sottostante per vedere la pagina %{name}."
+      visit_page: "Per altri acquisti visita %{url}"
+    captcha:
+      captcha_settings: "Impostazioni Captcha"
+      public_key: "Chiave pubblica"
+      private_key: "Chiave privata"
+      manage_keys: "Gestisci le tue chiavi (re)captcha"
+      use_captcha: "Usare Captcha?"
+      theme: "Tema"
+    validation:
+      recipients: "deve contenere almeno un indirizzo email valido"
+      invalid_recipients: "deve essere rimosso"
