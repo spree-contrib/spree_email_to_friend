@@ -6,20 +6,21 @@ RSpec.feature 'Email to friend', :js do
     visit spree.product_path(product)
     expect(page).to have_text product.name
     expect(page).to have_link 'Email a friend'
-    click_link 'Email a friend'
-  end
-
-  scenario 'throw error on empty form submission' do
-    click_button 'Tell your friend!'
-    expect(page).to have_text 'There were problems with the following fields:'
   end
 
   context 'without captcha' do
     background do
       Spree::Captcha::Config.use_captcha = false
+      click_link 'Email a friend'
+    end
+
+    scenario 'throw error on empty form submission' do
+      click_button 'Tell your friend!'
+      expect(page).to have_text 'There were problems with the following fields:'
     end
 
     scenario 'even a robot can send email to friend' do
+      expect(find_field('mail_to_friend_sender_email').value).to eq ''
       fill_in_form_with mail
       click_button 'Tell your friend!'
       expect(page).to have_text "Mail sent to #{mail.recipients.first}"
@@ -29,12 +30,12 @@ RSpec.feature 'Email to friend', :js do
   context 'with captcha' do
     background do
       Spree::Captcha::Config.use_captcha = true
+      click_link 'Email a friend'
     end
 
     scenario 'only human can send email to friend' do
       fill_in_form_with mail
       click_button 'Tell your friend!'
-      pending 'It bypass captcha..'
       expect(page).not_to have_text "Mail sent to #{mail.recipients.first}"
     end
   end
