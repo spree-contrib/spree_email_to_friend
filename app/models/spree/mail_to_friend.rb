@@ -12,14 +12,14 @@ class Spree::MailToFriend
   validates :invalid_recipients, length: { maximum: 0, message: Spree.t(:invalid_recipients, scope: :validation) }
 
   def initialize(opts = {})
-    @sender_email = opts[:sender_email] || ' '
-    @sender_name  = opts[:sender_name]  || @sender_email.split('@', 2)[0].titleize
+    @sender_email = opts[:sender_email] || ''
+    @sender_name  = opts[:sender_name]  || (@sender_email.split('@', 2)[0] || '').titleize
     @subject      = opts[:subject]      || Spree.t(:sender_subject, scope: :email_to_friend, sender_name: @sender_name, site: site_url)
 
     @recipients = []
     @invalid_recipients = []
 
-    addresses = (opts[:recipient_email] || '').gsub(';', ',').gsub(/\s/, '')
+    addresses = (opts[:recipient_email] || '').tr(';', ',').gsub(/\s/, '')
     addresses.split(',').each do |address|
       if address =~ EMAILREGEX
         @recipients << address
