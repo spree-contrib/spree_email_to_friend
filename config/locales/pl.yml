@@ -1,0 +1,29 @@
+---
+pl:
+  spree:
+    email_to_friend:
+      send_to_friend: "Podziel się produktem"
+      tell_about: "Opowiedz o: %{product}"
+      sender_name: "Twoje imię"
+      sender_email: "Twój adres email"
+      recipient_name: "Imię znajomego"
+      recipient_email: "Adres email znajomego"
+      recipient_emails: "Adresy email (oddzielone przecinkami)"
+      message: "Wiadomość"
+      send_message: "Wyślij znajomemu!"
+      mail_sent_to: "Mail wsyłany do %{email} "
+      send_to_other: "Wyślij do innego znajomego"
+      sender_subject: "%{sender_name} chce żebyś zobaczył(a) produkt na stronie  %{site}"
+      you_would_like_this_item: "Wydaje mi sie, że spodoba Ci się ten produkt:"
+      click_link_to_view: "Kliknij na link poniżej żeby zobaczyć stronę %{name}"
+      visit_page: "Odwiedź %{url} żeby zobaczyć więcej produktów"
+    captcha:
+      captcha_settings: "Ustawienia Captcha"
+      public_key: "Klucz publiczny"
+      private_key: "Klucz prywatny"
+      manage_keys: "Zarządzaj kluczami (re)captcha"
+      use_captcha: "Używać mechanizmu Captcha?"
+      theme: "Styl"
+    validation:
+      recipients: "musi zawierać co najmiej jeden adres email"
+      invalid_recipients: "musi być usunięty"
