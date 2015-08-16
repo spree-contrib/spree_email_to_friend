@@ -1,6 +1,5 @@
 RSpec.configure do |config|
-
-  Recaptcha.configuration.skip_verify_env.delete("test")
+  Recaptcha.configuration.skip_verify_env.delete('test')
 
   config.before do
     # reset captcha config
