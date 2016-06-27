@@ -1,10 +1,8 @@
-# Spree Email to Friend
+# Solidus Email to Friend
 
-[![Build Status](https://travis-ci.org/spree-contrib/spree_email_to_friend.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_email_to_friend)
-[![CodeClimate](https://codeclimate.com/github/spree-contrib/spree_email_to_friend/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_email_to_friend)
-[![Gem Version](https://badge.fury.io/rb/spree_email_to_friend.svg)](http://badge.fury.io/rb/spree_email_to_friend)
+Based on https://github.com/solidusio-contrib/spree_email_to_friend.
 
-The Spree Email to Friend extension enables you to send the product reference to your friend via email.
+The Solidus Email to Friend extension enables you to send the product reference to your friend via email.
 
 ---
 
@@ -12,7 +10,7 @@ The Spree Email to Friend extension enables you to send the product reference to
 
 Add to your `Gemfile`
 ```ruby
-gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', branch: 'master'
+gem 'solidus_email_to_friend', github: 'jtapia/solidus_email_to_friend', branch: 'master'
 ```
 
 Run
