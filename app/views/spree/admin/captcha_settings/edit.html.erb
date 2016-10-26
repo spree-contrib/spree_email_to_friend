@@ -6,35 +6,36 @@
 
   <fieldset>
     <div data-hook="admin_captcha_settings" class="row">
+      <div class="col-md-12">
+        <div class="form-group choices">
+          <%= label_tag Spree.t('captcha.use_captcha') %>
+          <div class="inline-radio">
+            <%= label_tag do %>
+              <%= radio_button_tag 'preferences[use_captcha]', true, Spree::Captcha::Config[:use_captcha] %>
+              <%= Spree.t(:yes) %>
+            <% end %>
 
-      <div class="form-group choices">
-        <%= label_tag Spree.t('captcha.use_captcha') %>
-        <div class="inline-radio">
-          <%= label_tag do %>
-            <%= radio_button_tag 'preferences[use_captcha]', true, Spree::Captcha::Config[:use_captcha] %>
-            <%= Spree.t(:yes) %>
-          <% end %>
-
-          <%= label_tag do %>
-            <%= radio_button_tag 'preferences[use_captcha]', false, !Spree::Captcha::Config[:use_captcha] %>
-            <%= Spree.t(:no) %>
-          <% end %>
+            <%= label_tag do %>
+              <%= radio_button_tag 'preferences[use_captcha]', false, !Spree::Captcha::Config[:use_captcha] %>
+              <%= Spree.t(:no) %>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <div data-hook="public_key" class="form-group">
-        <%= label_tag Spree.t('captcha.public_key') %>
-        <%= text_field_tag 'preferences[public_key]', Spree::Captcha::Config[:public_key], class: 'control-form' %>
-      </div>
+        <div data-hook="public_key" class="form-group">
+          <%= label_tag Spree.t('captcha.public_key') %>
+          <%= text_field_tag 'preferences[public_key]', Spree::Captcha::Config[:public_key], class: 'control-form' %>
+        </div>
 
-      <div data-hook="private_key" class="form-group">
-        <%= label_tag Spree.t('captcha.private_key') %>
-        <%= text_field_tag 'preferences[private_key]', Spree::Captcha::Config[:private_key], class: 'control-form' %>
-      </div>
+        <div data-hook="private_key" class="form-group">
+          <%= label_tag Spree.t('captcha.private_key') %>
+          <%= text_field_tag 'preferences[private_key]', Spree::Captcha::Config[:private_key], class: 'control-form' %>
+        </div>
 
-      <div data-hook="theme" class="form-group">
-        <%= label_tag Spree.t('captcha.theme') %>
-        <%= select_tag 'preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: 'select2' %>
+        <div data-hook="theme" class="form-group">
+          <%= label_tag Spree.t('captcha.theme') %>
+          <%= select_tag 'preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: 'select2' %>
+        </div>
       </div>
 
     </div>
