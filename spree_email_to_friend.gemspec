@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.version     = SpreeEmailToFriend.version
   s.summary     = 'Spree extension to send product recommendations to friends'
   s.description = s.summary
-  s.required_ruby_version = '>= 2.2.0'
+  s.required_ruby_version = '>= 2.2.2'
 
   s.authors      = ['Jorge Calás Lozano', 'Roman Smirnov', 'Trung Lê']
   s.homepage     = 'https://github.com/spree-contrib/spree_email_to_friend'
