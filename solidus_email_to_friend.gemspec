@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = false
 
-  s.add_dependency 'solidus', '~> 1.0'
+  s.add_dependency 'solidus', ['>= 1.0', '< 3']
   s.add_dependency 'recaptcha', '>= 0.3.1'
 
   s.add_development_dependency 'rspec-rails', '~> 3.3.0'
