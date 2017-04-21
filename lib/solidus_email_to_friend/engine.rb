@@ -3,9 +3,9 @@ require 'recaptcha/rails'
 module Spree::Captcha
 end
 
-module SpreeEmailToFriend
+module SolidusEmailToFriend
   class Engine < Rails::Engine
-    engine_name 'spree_email_to_friend'
+    engine_name 'solidus_email_to_friend'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
