@@ -1,8 +1,4 @@
 RSpec.describe Spree::MailToFriend, type: :model do
-  it { is_expected.to validate_presence_of :subject }
-  it { is_expected.to validate_presence_of :sender_name }
-  it { is_expected.to validate_presence_of :recipient_name }
-
   context 'validate required fields' do
     it 'verify test data hase been generated' do
       expect(build(:mail)).to be_valid
