@@ -22,14 +22,14 @@
         </div>
       </div>
 
-      <div data-hook="public_key" class="form-group">
-        <%= label_tag Spree.t('captcha.public_key') %>
-        <%= text_field_tag 'preferences[public_key]', Spree::Captcha::Config[:public_key], class: 'control-form' %>
+      <div data-hook="site_key" class="form-group">
+        <%= label_tag Spree.t('captcha.site_key') %>
+        <%= text_field_tag 'preferences[site_key]', Spree::Captcha::Config[:site_key], class: 'control-form' %>
       </div>
 
-      <div data-hook="private_key" class="form-group">
-        <%= label_tag Spree.t('captcha.private_key') %>
-        <%= text_field_tag 'preferences[private_key]', Spree::Captcha::Config[:private_key], class: 'control-form' %>
+      <div data-hook="secret_key" class="form-group">
+        <%= label_tag Spree.t('captcha.secret_key') %>
+        <%= text_field_tag 'preferences[secret_key]', Spree::Captcha::Config[:secret_key], class: 'control-form' %>
       </div>
 
       <div data-hook="theme" class="form-group">

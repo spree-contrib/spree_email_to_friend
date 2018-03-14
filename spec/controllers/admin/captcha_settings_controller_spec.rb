@@ -14,22 +14,22 @@ RSpec.describe Spree::Admin::CaptchaSettingsController, type: :controller do
 
     context 'For parameters:
             theme: clean,
-            private_key: FAKE,
-            public_key: FAKE,
+            secret_key: FAKE,
+            site_key: FAKE,
             use_captcha: false' do
       it 'sets preferred_theme to clean' do
         spree_put :update, preferences: { theme: 'clean' }
         expect(Spree::Captcha::Config.preferred_theme).to eq 'clean'
       end
 
-      it 'sets preferred_private_key to FAKE' do
-        spree_put :update, preferences: { private_key: 'FAKE' }
-        expect(Spree::Captcha::Config.preferred_private_key).to eq 'FAKE'
+      it 'sets preferred_secret_key to FAKE' do
+        spree_put :update, preferences: { secret_key: 'FAKE' }
+        expect(Spree::Captcha::Config.preferred_secret_key).to eq 'FAKE'
       end
 
-      it 'sets preferred_public_key to FAKE' do
-        spree_put :update, preferences: { public_key: 'FAKE' }
-        expect(Spree::Captcha::Config.preferred_public_key).to eq 'FAKE'
+      it 'sets preferred_secret_key to FAKE' do
+        spree_put :update, preferences: { secret_key: 'FAKE' }
+        expect(Spree::Captcha::Config.preferred_secret_key).to eq 'FAKE'
       end
 
       it 'sets preferred_use_captcha to false' do
