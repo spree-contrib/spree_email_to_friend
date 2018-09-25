@@ -3,46 +3,52 @@
 <% end %>
 
 <%= form_tag(admin_captcha_settings_path, method: :put) do |f| -%>
+  <div data-hook="admin_captcha_settings">
+    <div class="form-group choices">
+      <label><%= Spree.t('captcha.use_captcha') %></label>
+      <div class="inline-radio">
+        <%= label_tag do %>
+          <%= radio_button_tag 'preferences[use_captcha]',
+            true,
+            Spree::Captcha::Config[:use_captcha] %>
+          <%= Spree.t(:yes) %>
+        <% end %>
 
-  <fieldset>
-    <div data-hook="admin_captcha_settings" class="row">
-
-      <div class="form-group choices">
-        <%= label_tag Spree.t('captcha.use_captcha') %>
-        <div class="inline-radio">
-          <%= label_tag do %>
-            <%= radio_button_tag 'preferences[use_captcha]', true, Spree::Captcha::Config[:use_captcha] %>
-            <%= Spree.t(:yes) %>
-          <% end %>
-
-          <%= label_tag do %>
-            <%= radio_button_tag 'preferences[use_captcha]', false, !Spree::Captcha::Config[:use_captcha] %>
-            <%= Spree.t(:no) %>
-          <% end %>
-        </div>
+        <%= label_tag do %>
+          <%= radio_button_tag 'preferences[use_captcha]',
+            false,
+            !Spree::Captcha::Config[:use_captcha] %>
+          <%= Spree.t(:no) %>
+        <% end %>
       </div>
-
-      <div data-hook="site_key" class="form-group">
-        <%= label_tag Spree.t('captcha.site_key') %>
-        <%= text_field_tag 'preferences[site_key]', Spree::Captcha::Config[:site_key], class: 'control-form' %>
-      </div>
-
-      <div data-hook="secret_key" class="form-group">
-        <%= label_tag Spree.t('captcha.secret_key') %>
-        <%= text_field_tag 'preferences[secret_key]', Spree::Captcha::Config[:secret_key], class: 'control-form' %>
-      </div>
-
-      <div data-hook="theme" class="form-group">
-        <%= label_tag Spree.t('captcha.theme') %>
-        <%= select_tag 'preferences[theme]', options_for_select(Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]), class: 'select2' %>
-      </div>
-
     </div>
 
-    <div class="form-actions actions" data-hook="buttons">
-      <%= button Spree.t(:update), 'update' %>
+    <div data-hook="site_key" class="form-group">
+      <label><%= Spree.t('captcha.site_key') %></label>
+      <%= text_field_tag 'preferences[site_key]',
+        Spree::Captcha::Config[:site_key],
+        class: 'form-control' %>
     </div>
 
-  </fieldset>
+    <div data-hook="secret_key" class="form-group">
+      <label><%= Spree.t('captcha.secret_key') %></label>
+      <%= text_field_tag 'preferences[secret_key]',
+        Spree::Captcha::Config[:secret_key],
+        class: 'form-control' %>
+    </div>
 
+    <div data-hook="theme" class="form-group">
+      <label><%= Spree.t('captcha.theme') %></label>
+      <%= select_tag 'preferences[theme]',
+        options_for_select(
+          Spree::CaptchaConfiguration::THEMES, Spree::Captcha::Config[:theme]
+        ),
+        class: 'select2' %>
+    </div>
+
+  </div>
+
+  <div class="form-actions actions" data-hook="buttons">
+    <%= button Spree.t(:update), 'update' %>
+  </div>
 <% end -%>
