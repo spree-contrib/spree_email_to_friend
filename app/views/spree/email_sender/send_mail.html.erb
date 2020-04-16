@@ -1,31 +1,48 @@
-<h1><%= Spree.t('email_to_friend.tell_about', product: @object.name) %></h1>
+<h2>
+  <%= Spree.t('email_to_friend.tell_about', product: @object.name) %>
+</h2>
 
 <%= form_for(@mail_to_friend, url: email_to_friend_path(params[:type], @object)) do |f| -%>
   <%= render 'spree/shared/error_messages', target: @mail_to_friend %>
-  <p>
-    <%= f.label(:sender_name, Spree.t('email_to_friend.sender_name')) %><br/>
-    <%= f.text_field(:sender_name) %>
-  </p>
-  <p>
-    <%= f.label(:sender_email, Spree.t('email_to_friend.sender_email')) %><br/>
-    <%= f.text_field(:sender_email) %>
-  </p>
-  <p>
-    <%= f.label(:recipient_name, Spree.t('email_to_friend.recipient_name')) %><br/>
-    <%= f.text_field(:recipient_name) %>
-  </p>
-  <p>
-    <%= f.label(:recipient_email, Spree.t('email_to_friend.recipient_email')) %><br/>
-    <%= f.text_field(:recipient_email) %>
-  </p>
-  <p>
-    <%= f.label(:message, Spree.t('email_to_friend.message')) %><br/>
-    <%= f.text_area(:message) %>
-  </p>
+
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="form-group">
+        <%= f.label(:sender_name, Spree.t('email_to_friend.sender_name')) %>
+        <%= f.text_field :sender_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label(:sender_email, Spree.t('email_to_friend.sender_email')) %>
+        <%= f.text_field :sender_email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="form-group">
+        <%= f.label(:recipient_name, Spree.t('email_to_friend.recipient_name')) %>
+        <%= f.text_field :recipient_name , class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label(:recipient_email, Spree.t('email_to_friend.recipient_email')) %>
+        <%= f.text_field :recipient_email, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <%= f.label(:message, Spree.t('email_to_friend.message')) %>
+        <%= f.text_area :message, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
   <% if Spree::Captcha::Config[:use_captcha] %>
     <%= recaptcha_tags site_key: Spree::Captcha::Config[:site_key], display: { theme: Spree::Captcha::Config[:theme] } %>
   <% end %>
-  <p>
-    <%= f.submit Spree.t('email_to_friend.send_message') %>
-  </p>
+  
+  <div class="form-group mt-3">
+    <%= f.submit Spree.t('email_to_friend.send_message'), class: 'btn btn-primary' %>
+  </div>
 <% end -%>
